@@ -30,7 +30,7 @@
   </div>
 
   <!-- Nav -->
-  <nav class="nav" id="nav">
+  <nav class="nav nav--dark" id="nav">
     <div class="nav__inner">
       <a href="index.html" class="nav__logo">velarque<span>.</span></a>
       <div class="nav__links" id="navLinks">
@@ -57,10 +57,13 @@
     </div>
   </nav>
 
-  <!-- 1. HERO -->
+  <!-- 1. HERO — Cinematic video background -->
   <section class="hero" data-gsap="hero">
-    <div class="hero__bg">
-      <div class="hero__gradient"></div>
+    <div class="hero__media">
+      <video autoplay muted loop playsinline poster="https://placehold.co/1920x1080/0a0a0a/1a1a1a?text=">
+        <!-- Placeholder: dark poster until real video is added -->
+      </video>
+      <div class="hero__overlay"></div>
     </div>
     <div class="hero__container container">
       <div class="hero__eyebrow">
@@ -122,27 +125,20 @@
     </div>
   </section>
 
-  <!-- 3. INTRO — Qué hacemos -->
-  <section class="intro">
-    <div class="container">
-      <div class="intro__grid">
-        <div class="intro__left">
-          <p class="intro__label reveal-text">( Servicios )</p>
-        </div>
-        <div class="intro__content">
-          <h2 class="intro__title reveal-text">No necesitas cinco agencias diferentes. Nosotros cubrimos cada pieza de tu estrategia digital, y las hacemos trabajar juntas.</h2>
-          <p class="intro__text reveal-text">Desde la consultoría inicial hasta la ejecución y la optimización continua, todo pasa por el mismo equipo. Más coherencia, más agilidad, mejores resultados.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 4. SERVICES -->
+  <!-- 3. SERVICES — Bento grid -->
   <section class="services">
     <div class="container">
-      <div class="services__grid" data-gsap="stagger">
-        <a href="servicio-ia.html" class="service-card">
-          <div class="service-card__icon">
+      <div class="services__header">
+        <div class="services__header-split">
+          <p class="section-label reveal-text">( Servicios )</p>
+          <h2 class="section-title reveal-text">Lo que hacemos.</h2>
+        </div>
+      </div>
+      <div class="bento" data-gsap="stagger">
+        <!-- 01 IA — TALL (spans 2 rows) -->
+        <a href="servicio-ia.html" class="bento__card bento__card--tall bento__card--accent" data-bento>
+          <span class="bento__num">01</span>
+          <div class="bento__icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M12 2a4 4 0 0 1 4 4c0 1.5-.8 2.8-2 3.5v1h-4v-1A4 4 0 0 1 12 2z"/>
               <path d="M10 10.5v2h4v-2"/>
@@ -151,12 +147,14 @@
               <circle cx="12" cy="21" r="1"/>
             </svg>
           </div>
-          <h3 class="service-card__title">Inteligencia Artificial</h3>
-          <p class="service-card__text">Integramos IA en tus procesos de marketing para que trabajes menos y vendas más.</p>
-          <span class="service-card__link">Saber más <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></span>
+          <h3 class="bento__title">Inteligencia Artificial</h3>
+          <p class="bento__text">Integramos IA en tus procesos de marketing para que trabajes menos y vendas más. Modelos predictivos, automatización inteligente y análisis de datos avanzado.</p>
+          <span class="bento__link">Saber más <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></span>
         </a>
-        <a href="servicio-paid-media.html" class="service-card">
-          <div class="service-card__icon">
+        <!-- 02 Paid Media — Standard -->
+        <a href="servicio-paid-media.html" class="bento__card" data-bento>
+          <span class="bento__num">02</span>
+          <div class="bento__icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="12" r="10"/>
               <circle cx="12" cy="12" r="4"/>
@@ -166,23 +164,27 @@
               <path d="M18 12h4"/>
             </svg>
           </div>
-          <h3 class="service-card__title">Paid Media</h3>
-          <p class="service-card__text">Google Ads, Meta Ads, programática. Cada euro invertido, medido y optimizado.</p>
-          <span class="service-card__link">Saber más <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></span>
+          <h3 class="bento__title">Paid Media</h3>
+          <p class="bento__text">Google Ads, Meta Ads, programática. Cada euro invertido, medido y optimizado.</p>
+          <span class="bento__link">Saber más <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></span>
         </a>
-        <a href="servicio-desarrollo-web.html" class="service-card">
-          <div class="service-card__icon">
+        <!-- 03 Desarrollo Web — WIDE (spans 2 columns) -->
+        <a href="servicio-desarrollo-web.html" class="bento__card bento__card--wide" data-bento>
+          <span class="bento__num">03</span>
+          <div class="bento__icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <polyline points="16 18 22 12 16 6"/>
               <polyline points="8 6 2 12 8 18"/>
             </svg>
           </div>
-          <h3 class="service-card__title">Desarrollo Web</h3>
-          <p class="service-card__text">Webs rápidas, bonitas y que convierten. Diseño a medida, código limpio.</p>
-          <span class="service-card__link">Saber más <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></span>
+          <h3 class="bento__title">Desarrollo Web</h3>
+          <p class="bento__text">Webs rápidas, bonitas y que convierten. Diseño a medida, código limpio. WordPress custom, Shopify, lo que tu proyecto necesite.</p>
+          <span class="bento__link">Saber más <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></span>
         </a>
-        <a href="servicio-crm.html" class="service-card">
-          <div class="service-card__icon">
+        <!-- 04 CRM — Standard -->
+        <a href="servicio-crm.html" class="bento__card" data-bento>
+          <span class="bento__num">04</span>
+          <div class="bento__icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
               <circle cx="9" cy="7" r="4"/>
@@ -190,155 +192,148 @@
               <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
             </svg>
           </div>
-          <h3 class="service-card__title">CRM</h3>
-          <p class="service-card__text">Implementamos tu CRM para que no pierdas ni un lead. Lifecycle marketing.</p>
-          <span class="service-card__link">Saber más <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></span>
+          <h3 class="bento__title">CRM</h3>
+          <p class="bento__text">Implementamos tu CRM para que no pierdas ni un lead. Lifecycle marketing completo.</p>
+          <span class="bento__link">Saber más <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></span>
         </a>
-        <a href="servicio-automatizacion.html" class="service-card">
-          <div class="service-card__icon">
+        <!-- 05 Automatización — Standard with lime bg -->
+        <a href="servicio-automatizacion.html" class="bento__card bento__card--lime" data-bento>
+          <span class="bento__num">05</span>
+          <div class="bento__icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <polyline points="13 17 18 12 13 7"/>
               <polyline points="6 17 11 12 6 7"/>
             </svg>
           </div>
-          <h3 class="service-card__title">Automatización</h3>
-          <p class="service-card__text">Automatizamos tus procesos repetitivos: emails, reportes, flujos de trabajo.</p>
-          <span class="service-card__link">Saber más <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></span>
+          <h3 class="bento__title">Automatización</h3>
+          <p class="bento__text">Automatizamos tus procesos repetitivos: emails, reportes, flujos de trabajo.</p>
+          <span class="bento__link">Saber más <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></span>
         </a>
-        <a href="servicio-redes-sociales.html" class="service-card">
-          <div class="service-card__icon">
+        <!-- 06 Redes Sociales — WIDE (spans 2 columns) -->
+        <a href="servicio-redes-sociales.html" class="bento__card bento__card--wide" data-bento>
+          <span class="bento__num">06</span>
+          <div class="bento__icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
               <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
             </svg>
           </div>
-          <h3 class="service-card__title">Redes Sociales</h3>
-          <p class="service-card__text">Estrategia, contenido y gestión de redes que construyen comunidad y generan negocio.</p>
-          <span class="service-card__link">Saber más <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></span>
+          <h3 class="bento__title">Redes Sociales</h3>
+          <p class="bento__text">Estrategia, contenido y gestión de redes que construyen comunidad y generan negocio. Orgánico y pagado, integrados.</p>
+          <span class="bento__link">Saber más <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></span>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- 5. STATS -->
-  <section class="stats" data-gsap="stagger">
+  <!-- 4. MANIFESTO — Massive typography -->
+  <section class="manifesto">
     <div class="container">
-      <div class="stats__grid">
-        <div class="stat">
-          <span class="stat__number" data-gsap="counter" data-count="50" data-suffix="+">0</span>
-          <span class="stat__label">Proyectos<br>entregados</span>
-        </div>
-        <div class="stat">
-          <span class="stat__number" data-gsap="counter" data-count="3" data-suffix=" sem.">0</span>
-          <span class="stat__label">Tiempo medio<br>de entrega</span>
-        </div>
-        <div class="stat">
-          <span class="stat__number" data-gsap="counter" data-count="98" data-suffix="%">0</span>
-          <span class="stat__label">Satisfacción<br>del cliente</span>
-        </div>
-        <div class="stat">
-          <span class="stat__number" data-gsap="counter" data-count="4.2" data-prefix="x">0</span>
-          <span class="stat__label">ROAS medio<br>en paid media</span>
-        </div>
-      </div>
+      <h2 class="manifesto__text reveal-text">
+        No necesitas cinco agencias.<br>
+        Nosotros cubrimos <em>cada pieza</em><br>
+        de tu estrategia digital.
+      </h2>
     </div>
   </section>
 
-  <!-- 6. CASES -->
-  <section class="cases" id="work">
-    <div class="container">
-      <div class="cases__header">
-        <p class="section-label reveal-text">( Casos de éxito )</p>
-        <h2 class="section-title reveal-text">Resultados reales de proyectos reales.</h2>
-        <p class="section-subtitle reveal-text">No te contamos lo que podríamos hacer. Te enseñamos lo que ya hemos hecho.</p>
-      </div>
+  <!-- 5. VIDEO BREAK — Full-bleed stat -->
+  <section class="video-break">
+    <div class="video-break__bg">
+      <img src="https://placehold.co/1920x1080/0a0a0a/1a1a1a?text=" alt="" aria-hidden="true">
+      <div class="video-break__bg-overlay"></div>
     </div>
-    <div class="work__slider splide" id="workSlider">
-      <div class="splide__track">
-        <div class="splide__list">
-          <div class="splide__slide">
-            <article class="work-card">
-              <div class="work-card__img">
-                <img src="https://placehold.co/560x350/1a1a1a/333?text=Caso+1" alt="Caso de éxito" loading="lazy">
-                <div class="work-card__overlay">
-                  <span class="work-card__tag">Web + Paid Media</span>
-                </div>
-              </div>
-              <div class="work-card__info">
-                <h3 class="work-card__title">Web nueva + estrategia de captación desde cero</h3>
-                <div class="work-card__metrics">
-                  <div class="work-card__metric">
-                    <span class="work-card__metric-val">2 sem.</span>
-                    <span class="work-card__metric-lab">Entrega</span>
-                  </div>
-                  <div class="work-card__metric">
-                    <span class="work-card__metric-val">+340%</span>
-                    <span class="work-card__metric-lab">Tráfico orgánico</span>
-                  </div>
-                  <div class="work-card__metric">
-                    <span class="work-card__metric-val">45</span>
-                    <span class="work-card__metric-lab">Leads / mes</span>
-                  </div>
-                </div>
-              </div>
-            </article>
-          </div>
-          <div class="splide__slide">
-            <article class="work-card">
-              <div class="work-card__img">
-                <img src="https://placehold.co/560x350/1a1a1a/333?text=Caso+2" alt="Caso de éxito" loading="lazy">
-                <div class="work-card__overlay">
-                  <span class="work-card__tag">Automatización + CRM</span>
-                </div>
-              </div>
-              <div class="work-card__info">
-                <h3 class="work-card__title">CRM implementado y procesos automatizados</h3>
-                <div class="work-card__metrics">
-                  <div class="work-card__metric">
-                    <span class="work-card__metric-val">1 sem.</span>
-                    <span class="work-card__metric-lab">Implementación</span>
-                  </div>
-                  <div class="work-card__metric">
-                    <span class="work-card__metric-val">12</span>
-                    <span class="work-card__metric-lab">Flujos automáticos</span>
-                  </div>
-                  <div class="work-card__metric">
-                    <span class="work-card__metric-val">+60%</span>
-                    <span class="work-card__metric-lab">Conversión</span>
-                  </div>
-                </div>
-              </div>
-            </article>
-          </div>
-          <div class="splide__slide">
-            <article class="work-card">
-              <div class="work-card__img">
-                <img src="https://placehold.co/560x350/1a1a1a/333?text=Caso+3" alt="Caso de éxito" loading="lazy">
-                <div class="work-card__overlay">
-                  <span class="work-card__tag">Paid Media + IA</span>
-                </div>
-              </div>
-              <div class="work-card__info">
-                <h3 class="work-card__title">Campañas de Meta Ads optimizadas con IA predictiva</h3>
-                <div class="work-card__metrics">
-                  <div class="work-card__metric">
-                    <span class="work-card__metric-val">x5.8</span>
-                    <span class="work-card__metric-lab">ROAS</span>
-                  </div>
-                  <div class="work-card__metric">
-                    <span class="work-card__metric-val">-35%</span>
-                    <span class="work-card__metric-lab">Coste/adquisición</span>
-                  </div>
-                  <div class="work-card__metric">
-                    <span class="work-card__metric-val">IA</span>
-                    <span class="work-card__metric-lab">Optimización</span>
-                  </div>
-                </div>
-              </div>
-            </article>
+    <div class="video-break__content container">
+      <span class="video-break__number" data-count="50" data-suffix="+">0</span>
+      <span class="video-break__label">Proyectos entregados.<br>Cero excusas.</span>
+    </div>
+  </section>
+
+  <!-- 6. CASES — Horizontal scroll (pinned) -->
+  <section class="cases-horizontal" data-gsap="horizontal-scroll">
+    <div class="cases-horizontal__header container">
+      <p class="section-label reveal-text">( Casos de éxito )</p>
+      <h2 class="section-title reveal-text">Resultados reales.</h2>
+    </div>
+    <div class="cases-horizontal__track" data-gsap="horizontal-track">
+      <!-- Case 1 -->
+      <article class="case-card case-card--tall">
+        <div class="case-card__img">
+          <img src="https://placehold.co/800x500/1a1a1a/333?text=Caso+1" alt="Caso de éxito" loading="lazy">
+          <div class="case-card__overlay">
+            <span class="case-card__tag">Web + Paid Media</span>
           </div>
         </div>
-      </div>
+        <div class="case-card__info">
+          <h3 class="case-card__title">Web nueva + estrategia de captación desde cero</h3>
+          <div class="case-card__metrics">
+            <div class="case-card__metric">
+              <span class="case-card__metric-val">2 sem.</span>
+              <span class="case-card__metric-lab">Entrega</span>
+            </div>
+            <div class="case-card__metric">
+              <span class="case-card__metric-val">+340%</span>
+              <span class="case-card__metric-lab">Tráfico orgánico</span>
+            </div>
+            <div class="case-card__metric">
+              <span class="case-card__metric-val">45</span>
+              <span class="case-card__metric-lab">Leads / mes</span>
+            </div>
+          </div>
+        </div>
+      </article>
+      <!-- Case 2 -->
+      <article class="case-card case-card--short">
+        <div class="case-card__img">
+          <img src="https://placehold.co/800x500/1a1a1a/333?text=Caso+2" alt="Caso de éxito" loading="lazy">
+          <div class="case-card__overlay">
+            <span class="case-card__tag">Automatización + CRM</span>
+          </div>
+        </div>
+        <div class="case-card__info">
+          <h3 class="case-card__title">CRM implementado y procesos automatizados</h3>
+          <div class="case-card__metrics">
+            <div class="case-card__metric">
+              <span class="case-card__metric-val">1 sem.</span>
+              <span class="case-card__metric-lab">Implementación</span>
+            </div>
+            <div class="case-card__metric">
+              <span class="case-card__metric-val">12</span>
+              <span class="case-card__metric-lab">Flujos automáticos</span>
+            </div>
+            <div class="case-card__metric">
+              <span class="case-card__metric-val">+60%</span>
+              <span class="case-card__metric-lab">Conversión</span>
+            </div>
+          </div>
+        </div>
+      </article>
+      <!-- Case 3 -->
+      <article class="case-card case-card--tall">
+        <div class="case-card__img">
+          <img src="https://placehold.co/800x500/1a1a1a/333?text=Caso+3" alt="Caso de éxito" loading="lazy">
+          <div class="case-card__overlay">
+            <span class="case-card__tag">Paid Media + IA</span>
+          </div>
+        </div>
+        <div class="case-card__info">
+          <h3 class="case-card__title">Campañas de Meta Ads optimizadas con IA predictiva</h3>
+          <div class="case-card__metrics">
+            <div class="case-card__metric">
+              <span class="case-card__metric-val">x5.8</span>
+              <span class="case-card__metric-lab">ROAS</span>
+            </div>
+            <div class="case-card__metric">
+              <span class="case-card__metric-val">-35%</span>
+              <span class="case-card__metric-lab">Coste/adquisición</span>
+            </div>
+            <div class="case-card__metric">
+              <span class="case-card__metric-val">IA</span>
+              <span class="case-card__metric-lab">Optimización</span>
+            </div>
+          </div>
+        </div>
+      </article>
     </div>
   </section>
 
@@ -374,65 +369,61 @@
     </div>
   </section>
 
-  <!-- 8. PROCESS -->
+  <!-- 8. PROCESS — Editorial split layout -->
   <section class="process">
     <div class="container">
       <div class="process__header">
-        <p class="section-label reveal-text">( Proceso )</p>
-        <h2 class="section-title reveal-text">Cómo trabajamos.</h2>
-        <p class="section-subtitle reveal-text">Cuatro pasos claros, sin letra pequeña. Así convertimos tu idea en resultados.</p>
+        <div class="process__header-split">
+          <p class="section-label reveal-text">( Proceso )</p>
+          <div>
+            <h2 class="section-title reveal-text">Cómo trabajamos.</h2>
+            <p class="section-subtitle reveal-text">Cuatro pasos claros, sin letra pequeña. Así convertimos tu idea en resultados.</p>
+          </div>
+        </div>
       </div>
-      <div class="process__steps">
-        <div class="process-step reveal-up">
-          <div class="process-step__left">
-            <span class="process-step__num">01</span>
-            <span class="process-step__time">1-2 días</span>
+      <div class="process__items">
+        <div class="process-item reveal-up">
+          <div class="process-item__text">
+            <span class="process-item__num">01</span>
+            <h3>Escuchamos</h3>
+            <p>Nos reunimos contigo para entender tu negocio, tus objetivos y tus puntos de dolor. Sin presentaciones vacías: solo las preguntas correctas.</p>
+            <span class="process-item__time">1-2 días</span>
           </div>
-          <div class="process-step__center">
-            <h3 class="process-step__title">Escuchamos</h3>
-            <p class="process-step__text">Nos reunimos contigo para entender tu negocio, tus objetivos y tus puntos de dolor. Sin presentaciones vacías: solo las preguntas correctas.</p>
-          </div>
-          <div class="process-step__visual">
-            <img src="https://placehold.co/420x280/1a1a1a/333?text=Escuchamos" alt="Escuchamos" loading="lazy">
+          <div class="process-item__media">
+            <img src="https://placehold.co/560x400/1a1a1a/333?text=Escuchamos" alt="Escuchamos" loading="lazy">
           </div>
         </div>
-        <div class="process-step reveal-up">
-          <div class="process-step__left">
-            <span class="process-step__num">02</span>
-            <span class="process-step__time">3-5 días</span>
+        <div class="process-item process-item--reverse reveal-up">
+          <div class="process-item__text">
+            <span class="process-item__num">02</span>
+            <h3>Diseñamos</h3>
+            <p>Definimos la estrategia, creamos los wireframes y diseñamos la solución visual. Iteramos contigo hasta que esté perfecto.</p>
+            <span class="process-item__time">3-5 días</span>
           </div>
-          <div class="process-step__center">
-            <h3 class="process-step__title">Diseñamos</h3>
-            <p class="process-step__text">Definimos la estrategia, creamos los wireframes y diseñamos la solución visual. Iteramos contigo hasta que esté perfecto.</p>
-          </div>
-          <div class="process-step__visual">
-            <img src="https://placehold.co/420x280/1a1a1a/333?text=Diseñamos" alt="Diseñamos" loading="lazy">
+          <div class="process-item__media">
+            <img src="https://placehold.co/560x400/1a1a1a/333?text=Diseñamos" alt="Diseñamos" loading="lazy">
           </div>
         </div>
-        <div class="process-step reveal-up">
-          <div class="process-step__left">
-            <span class="process-step__num">03</span>
-            <span class="process-step__time">1-4 semanas</span>
+        <div class="process-item reveal-up">
+          <div class="process-item__text">
+            <span class="process-item__num">03</span>
+            <h3>Ejecutamos</h3>
+            <p>Desarrollamos, implementamos y configuramos todo lo necesario. Código limpio, herramientas correctas y plazos reales.</p>
+            <span class="process-item__time">1-4 semanas</span>
           </div>
-          <div class="process-step__center">
-            <h3 class="process-step__title">Ejecutamos</h3>
-            <p class="process-step__text">Desarrollamos, implementamos y configuramos todo lo necesario. Código limpio, herramientas correctas y plazos reales.</p>
-          </div>
-          <div class="process-step__visual">
-            <img src="https://placehold.co/420x280/1a1a1a/333?text=Ejecutamos" alt="Ejecutamos" loading="lazy">
+          <div class="process-item__media">
+            <img src="https://placehold.co/560x400/1a1a1a/333?text=Ejecutamos" alt="Ejecutamos" loading="lazy">
           </div>
         </div>
-        <div class="process-step reveal-up">
-          <div class="process-step__left">
-            <span class="process-step__num">04</span>
-            <span class="process-step__time">Continuo</span>
+        <div class="process-item process-item--reverse reveal-up">
+          <div class="process-item__text">
+            <span class="process-item__num">04</span>
+            <h3>Optimizamos</h3>
+            <p>Medimos resultados, analizamos datos y ajustamos la estrategia. Tu proyecto no termina con la entrega: mejora con el tiempo.</p>
+            <span class="process-item__time">Continuo</span>
           </div>
-          <div class="process-step__center">
-            <h3 class="process-step__title">Optimizamos</h3>
-            <p class="process-step__text">Medimos resultados, analizamos datos y ajustamos la estrategia. Tu proyecto no termina con la entrega: mejora con el tiempo.</p>
-          </div>
-          <div class="process-step__visual">
-            <img src="https://placehold.co/420x280/1a1a1a/333?text=Optimizamos" alt="Optimizamos" loading="lazy">
+          <div class="process-item__media">
+            <img src="https://placehold.co/560x400/1a1a1a/333?text=Optimizamos" alt="Optimizamos" loading="lazy">
           </div>
         </div>
       </div>
@@ -500,7 +491,7 @@
     </div>
   </section>
 
-  <!-- 10. BLOG PREVIEW -->
+  <!-- 10. BLOG PREVIEW — 2 posts -->
   <section class="blog-preview">
     <div class="container">
       <div class="blog-preview__header">
@@ -534,20 +525,6 @@
             </div>
             <h3 class="blog-card__title">WordPress custom vs. page builders: por qué importa</h3>
             <p class="blog-card__excerpt">No todas las webs son iguales por dentro. El código que no ves define el rendimiento que sí notas.</p>
-            <span class="blog-card__link">Leer más <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></span>
-          </div>
-        </article>
-        <article class="blog-card">
-          <div class="blog-card__img">
-            <img src="https://placehold.co/600x338/1a1a1a/333?text=Blog+3" alt="Artículo" loading="lazy">
-          </div>
-          <div class="blog-card__content">
-            <div class="blog-card__meta">
-              <span class="blog-card__category">IA</span>
-              <span class="blog-card__date">10 feb 2026</span>
-            </div>
-            <h3 class="blog-card__title">IA aplicada al marketing: 5 usos reales que ya puedes implementar</h3>
-            <p class="blog-card__excerpt">No es ciencia ficción. Estas son las aplicaciones de IA que están dando resultados hoy.</p>
             <span class="blog-card__link">Leer más <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></span>
           </div>
         </article>
