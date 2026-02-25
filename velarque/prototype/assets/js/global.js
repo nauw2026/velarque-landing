@@ -13,6 +13,12 @@
     setTimeout(function () {
       if (loader) loader.classList.add('hidden');
       document.body.style.overflow = '';
+      // Layout changed — tell ScrollTrigger to recalculate
+      if (typeof ScrollTrigger !== 'undefined') {
+        requestAnimationFrame(function () {
+          ScrollTrigger.refresh();
+        });
+      }
     }, 800);
   }
   if (loader) {
