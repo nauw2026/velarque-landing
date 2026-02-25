@@ -266,6 +266,40 @@ em { font-style: italic; color: var(--accent); }
   border-bottom: 1px solid var(--gray-200);
   box-shadow: var(--shadow-sm);
 }
+/* Dark hero variant — white text on transparent bg */
+.nav--dark .nav__logo { color: var(--white); }
+.nav--dark .nav__links > a,
+.nav--dark .nav__item > a { color: rgba(255, 255, 255, 0.7); }
+.nav--dark .nav__links > a:hover,
+.nav--dark .nav__item > a:hover,
+.nav--dark .nav__links > a.active { color: var(--white); }
+.nav--dark .nav__cta {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: var(--white);
+}
+.nav--dark .nav__cta:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.nav--dark .nav__toggle span { background: var(--white); }
+/* When scrolled, revert to light nav regardless */
+.nav--dark.nav--scrolled .nav__logo { color: var(--black); }
+.nav--dark.nav--scrolled .nav__links > a,
+.nav--dark.nav--scrolled .nav__item > a { color: var(--gray-600); }
+.nav--dark.nav--scrolled .nav__links > a:hover,
+.nav--dark.nav--scrolled .nav__item > a:hover,
+.nav--dark.nav--scrolled .nav__links > a.active { color: var(--black); }
+.nav--dark.nav--scrolled .nav__cta {
+  background: var(--black);
+  border-color: var(--black);
+  color: var(--white);
+}
+.nav--dark.nav--scrolled .nav__cta:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.nav--dark.nav--scrolled .nav__toggle span { background: var(--black); }
 .nav__inner {
   max-width: 1400px;
   margin: 0 auto;
