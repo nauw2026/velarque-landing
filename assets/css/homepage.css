@@ -1,48 +1,47 @@
 /* ============================================
    VELARQUE — Homepage Styles
+   Light, flat, clean aesthetic
    ============================================ */
 
 /* ============================
-   TRUST BAR (logos marquee)
+   INTRO SECTION
    ============================ */
-.trust-bar {
-  padding: 48px 0;
-  border-bottom: 1px solid var(--gray-100);
-  overflow: hidden;
+.intro {
+  padding: clamp(100px, 12vh, 160px) 0;
 }
-.trust-bar__label {
+.intro__grid {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 60px;
+  align-items: start;
+}
+.intro__label {
   font-size: 12px;
+  font-weight: 600;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: var(--gray-400);
-  text-align: center;
-  margin-bottom: 32px;
+  color: var(--accent);
 }
-.trust-bar__marquee {
-  position: relative;
-  overflow: hidden;
+.intro__content {}
+.intro__title {
+  font-family: var(--display);
+  font-size: clamp(24px, 3vw, 40px);
+  font-weight: 500;
+  color: var(--black);
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  margin-bottom: 20px;
 }
-.trust-bar__track {
-  display: flex;
-  align-items: center;
-  gap: 64px;
-  animation: marqueeScroll 25s linear infinite;
-  will-change: transform;
-}
-.trust-bar__logo {
-  flex-shrink: 0;
-  height: 28px;
-  opacity: 0.4;
-  filter: grayscale(100%);
-  transition: opacity 0.4s, filter 0.4s;
-}
-.trust-bar__logo:hover {
-  opacity: 0.8;
-  filter: grayscale(0%);
+.intro__text {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.8;
+  color: var(--gray-500);
+  max-width: 600px;
 }
 
 /* ============================
-   SERVICES (6 cards grid)
+   SERVICES (7 cards grid)
    ============================ */
 .services {
   padding: clamp(100px, 12vh, 180px) 0;
@@ -52,73 +51,72 @@
 }
 .services__grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
 }
 .service-card {
-  display: block;
-  padding: 40px 32px;
-  background: var(--gray-50);
+  display: flex;
+  flex-direction: column;
+  padding: 36px;
+  background: var(--white);
   border-radius: var(--radius);
-  border: 1px solid var(--gray-100);
-  transition: transform 0.5s var(--ease), border-color 0.5s var(--ease), background 0.5s var(--ease), box-shadow 0.5s var(--ease);
+  border: 1px solid var(--gray-200);
+  transition: transform 0.5s var(--ease), border-color 0.5s var(--ease), box-shadow 0.5s var(--ease);
   position: relative;
 }
 .service-card:hover {
-  transform: translateY(-8px);
+  transform: translateY(-4px);
   border-color: transparent;
-  background: var(--white);
-  box-shadow: var(--shadow-card-hover), 0 0 40px var(--accent-glow);
+  box-shadow: var(--shadow-md);
 }
 .service-card__icon {
-  width: 48px;
-  height: 48px;
+  width: 44px;
+  height: 44px;
   margin-bottom: 24px;
-  color: var(--gray-400);
-  transition: color 0.5s var(--ease), transform 0.5s var(--ease);
-}
-.service-card:hover .service-card__icon {
-  color: var(--accent);
-  transform: scale(1.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent-light);
+  border-radius: var(--radius-sm);
 }
 .service-card__icon svg {
-  width: 100%;
-  height: 100%;
-  stroke: currentColor;
+  width: 22px;
+  height: 22px;
+  stroke: var(--accent);
   fill: none;
   stroke-width: 1.5;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
 .service-card__title {
-  font-family: var(--sans);
-  font-size: 20px;
+  font-family: var(--display);
+  font-size: 18px;
   font-weight: 500;
   color: var(--black);
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 .service-card__text {
-  font-size: 15px;
-  font-weight: 300;
+  font-size: 14px;
+  font-weight: 400;
   line-height: 1.7;
   color: var(--gray-500);
   margin-bottom: 24px;
+  flex-grow: 1;
 }
 .service-card__link {
   font-size: 13px;
   font-weight: 500;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
+  letter-spacing: 0.3px;
   color: var(--accent);
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  transition: gap 0.3s var(--ease), color 0.3s var(--ease);
+  gap: 6px;
+  transition: gap 0.3s var(--ease);
 }
 .service-card__link svg {
   transition: transform 0.3s var(--ease);
 }
-.service-card:hover .service-card__link { gap: 12px; }
+.service-card:hover .service-card__link { gap: 10px; }
 .service-card:hover .service-card__link svg { transform: translate(2px, -2px); }
 
 /* ============================
@@ -126,7 +124,6 @@
    ============================ */
 .cases {
   padding: clamp(80px, 10vh, 140px) 0;
-  background: var(--gray-50);
   overflow: hidden;
 }
 .cases__header {
@@ -142,16 +139,16 @@
   border-radius: var(--radius);
   overflow: hidden;
   background: var(--white);
-  border: 1px solid var(--gray-100);
+  border: 1px solid var(--gray-200);
   transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
 }
 .work-card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
 }
 .work-card__img {
   position: relative;
-  aspect-ratio: 3/2;
+  aspect-ratio: 16/10;
   overflow: hidden;
 }
 .work-card__img img {
@@ -160,7 +157,7 @@
   object-fit: cover;
   transition: transform 0.7s var(--ease);
 }
-.work-card:hover .work-card__img img { transform: scale(1.05); }
+.work-card:hover .work-card__img img { transform: scale(1.03); }
 .work-card__overlay {
   position: absolute;
   top: 16px;
@@ -168,31 +165,34 @@
 }
 .work-card__tag {
   display: inline-block;
-  padding: 6px 16px;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(8px);
-  color: var(--white);
-  font-size: 12px;
+  padding: 6px 14px;
+  background: var(--white);
+  color: var(--gray-600);
+  font-size: 11px;
   font-weight: 500;
   letter-spacing: 1px;
   text-transform: uppercase;
   border-radius: 100px;
+  border: 1px solid var(--gray-200);
 }
-.work-card__info { padding: 28px 32px; }
+.work-card__info { padding: 24px 28px; }
 .work-card__title {
-  font-size: 20px;
+  font-family: var(--display);
+  font-size: 18px;
   font-weight: 500;
   color: var(--black);
   margin-bottom: 20px;
+  line-height: 1.3;
 }
 .work-card__metrics {
   display: flex;
-  gap: 32px;
+  gap: 28px;
 }
 .work-card__metric { display: flex; flex-direction: column; gap: 4px; }
 .work-card__metric-val {
-  font-size: 22px;
-  font-weight: 300;
+  font-family: var(--display);
+  font-size: 20px;
+  font-weight: 500;
   color: var(--black);
   letter-spacing: -0.5px;
 }
@@ -223,7 +223,7 @@
    ============================ */
 .testimonials {
   padding: clamp(100px, 14vh, 200px) 0;
-  background: var(--gray-50);
+  background: var(--white);
 }
 .testimonials__header {
   margin-bottom: 64px;
@@ -235,22 +235,24 @@
 }
 .testimonials__slider .splide__pagination {
   margin-top: 48px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
 }
 .testimonials__slider .splide__pagination__page {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--gray-300);
+  background: var(--gray-200);
   border: none;
   cursor: pointer;
   transition: all 0.4s var(--ease);
-  margin: 0 6px;
   padding: 0;
   opacity: 1;
 }
 .testimonials__slider .splide__pagination__page.is-active {
   background: var(--accent);
-  width: 32px;
+  width: 16px;
   border-radius: 4px;
 }
 
@@ -266,19 +268,19 @@
 .blog-preview__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
+  gap: 24px;
 }
 .blog-card {
   display: block;
   border-radius: var(--radius);
   overflow: hidden;
   background: var(--white);
-  border: 1px solid var(--gray-100);
+  border: 1px solid var(--gray-200);
   transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
 }
 .blog-card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
 }
 .blog-card__img {
   aspect-ratio: 16/9;
@@ -290,18 +292,18 @@
   object-fit: cover;
   transition: transform 0.7s var(--ease);
 }
-.blog-card:hover .blog-card__img img { transform: scale(1.05); }
-.blog-card__content { padding: 28px; }
+.blog-card:hover .blog-card__img img { transform: scale(1.03); }
+.blog-card__content { padding: 24px 28px; }
 .blog-card__meta {
   display: flex;
   align-items: center;
-  gap: 16px;
-  margin-bottom: 16px;
+  gap: 12px;
+  margin-bottom: 14px;
 }
 .blog-card__category {
   font-size: 11px;
   font-weight: 500;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
   text-transform: uppercase;
   color: var(--accent);
   padding: 4px 12px;
@@ -313,48 +315,49 @@
   color: var(--gray-400);
 }
 .blog-card__title {
-  font-family: var(--sans);
+  font-family: var(--display);
   font-size: 18px;
   font-weight: 500;
   color: var(--black);
   line-height: 1.4;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 .blog-card__excerpt {
   font-size: 14px;
-  font-weight: 300;
-  line-height: 1.6;
+  font-weight: 400;
+  line-height: 1.7;
   color: var(--gray-500);
   margin-bottom: 20px;
 }
 .blog-card__link {
   font-size: 13px;
   font-weight: 500;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
+  letter-spacing: 0.3px;
   color: var(--accent);
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   transition: gap 0.3s var(--ease);
 }
 .blog-card__link svg {
   transition: transform 0.3s var(--ease);
 }
-.blog-card:hover .blog-card__link { gap: 12px; }
+.blog-card:hover .blog-card__link { gap: 10px; }
 .blog-card:hover .blog-card__link svg { transform: translate(2px, -2px); }
 
 /* ============================
    HOMEPAGE RESPONSIVE
    ============================ */
 @media (max-width: 1024px) {
+  .intro__grid { grid-template-columns: 1fr; gap: 24px; }
   .services__grid { grid-template-columns: repeat(2, 1fr); }
   .why-velarque__header { grid-template-columns: 1fr; gap: 24px; }
-  .blog-preview__grid { grid-template-columns: 1fr; max-width: 500px; margin-left: auto; margin-right: auto; }
+  .blog-preview__grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 768px) {
   .services__grid { grid-template-columns: 1fr; }
+  .blog-preview__grid { grid-template-columns: 1fr; }
   .trust-bar__track { gap: 40px; }
   .trust-bar__logo { height: 22px; }
 }
