@@ -11,6 +11,7 @@
 
   function initSmoothScroll() {
     if (window.matchMedia('(pointer: coarse)').matches) return;
+    if (typeof Lenis === 'undefined') return;
 
     lenis = new Lenis({
       duration: 1.2,
@@ -251,11 +252,13 @@
 
   // --- Init ---
   function init() {
-    initGSAP();
-    initSmoothScroll();
+    // Guard: GSAP must be available
+    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
 
-    // Critical fix: if page already loaded, run animations immediately.
-    // Otherwise wait for load event.
+    try { initGSAP(); } catch (e) { return; }
+    try { initSmoothScroll(); } catch (e) { /* Lenis optional — continue without smooth scroll */ }
+
+    // Run animations: if page already loaded, go now. Otherwise wait for load.
     if (document.readyState === 'complete') {
       startAllAnimations();
     } else {
