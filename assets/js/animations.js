@@ -366,10 +366,35 @@
     });
   }
 
+  // --- Safety Fallback ---
+  // If animations haven't completed within 4 seconds, force everything visible
+  var safetyClearedFlag = false;
+  function startSafetyTimeout() {
+    setTimeout(function () {
+      if (safetyClearedFlag) return;
+      safetyClearedFlag = true;
+      // Force all opacity:0 elements to be visible
+      var hidden = document.querySelectorAll('.hero__eyebrow, .hero__word, .hero__bottom, .hero__scroll, .page-hero__eyebrow, .page-hero__title, .page-hero__desc, .page-hero__actions, .reveal-text, .reveal-up');
+      hidden.forEach(function (el) {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+      });
+    }, 4000);
+  }
+
   // --- Init All ---
   function init() {
+    // Signal that GSAP loaded successfully — CSS will now hide animation targets
+    document.body.classList.add('gsap-ready');
+
     initGSAP();
     initSmoothScroll();
+
+    // Start safety fallback timer
+    startSafetyTimeout();
+
+    // Fire hero animation immediately (don't wait for full page load)
+    initHeroAnimation();
 
     // Wait for page load to ensure all elements are measurable
     window.addEventListener('load', function () {
@@ -379,12 +404,14 @@
         initTextSplit();
         initParallax();
         initStaggerGrids();
-        initHeroAnimation();
         initMagneticButtons();
         initCounterAnimations();
         initHorizontalScroll();
         initLineAnimations();
         initFadeInScale();
+
+        // Mark safety as cleared since animations are now set up
+        safetyClearedFlag = true;
 
         // Refresh ScrollTrigger after all animations are set up
         ScrollTrigger.refresh();
