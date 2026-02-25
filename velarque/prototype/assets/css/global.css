@@ -215,9 +215,17 @@ em { font-style: italic; color: var(--accent); }
   color: #3d6b00;
 }
 
-/* --- REVEAL ANIMATIONS (initial state — GSAP handles transitions) --- */
+/* --- REVEAL ANIMATIONS ---
+   Elements are visible by default (CSS fallback).
+   When GSAP loads successfully it adds .gsap-ready to body,
+   hiding them so GSAP can animate them in.
+   ------------------------------------------- */
 .reveal-text,
 .reveal-up {
+  opacity: 1;
+}
+.gsap-ready .reveal-text,
+.gsap-ready .reveal-up {
   opacity: 0;
 }
 
@@ -411,6 +419,8 @@ em { font-style: italic; color: var(--accent); }
   background: var(--white);
   border: 1px solid var(--gray-200);
   border-radius: 100px;
+}
+.gsap-ready .hero__eyebrow {
   opacity: 0;
 }
 .hero__line {
@@ -441,6 +451,8 @@ em { font-style: italic; color: var(--accent); }
   letter-spacing: -0.04em;
   line-height: 1.1;
   color: var(--black);
+}
+.gsap-ready .hero__word {
   opacity: 0;
 }
 .hero__title em {
@@ -451,6 +463,8 @@ em { font-style: italic; color: var(--accent); }
   display: flex;
   align-items: flex-start;
   gap: 48px;
+}
+.gsap-ready .hero__bottom {
   opacity: 0;
 }
 .hero__desc {
@@ -493,6 +507,8 @@ em { font-style: italic; color: var(--accent); }
   flex-direction: column;
   align-items: center;
   gap: 12px;
+}
+.gsap-ready .hero__scroll {
   opacity: 0;
 }
 .hero__scroll span {
@@ -547,6 +563,8 @@ em { font-style: italic; color: var(--accent); }
   background: var(--white);
   border: 1px solid var(--gray-200);
   border-radius: 100px;
+}
+.gsap-ready .page-hero__eyebrow {
   opacity: 0;
 }
 .page-hero__eyebrow .hero__line {
@@ -570,6 +588,8 @@ em { font-style: italic; color: var(--accent); }
   color: var(--black);
   max-width: 900px;
   margin-bottom: 24px;
+}
+.gsap-ready .page-hero__title {
   opacity: 0;
 }
 .page-hero__title em {
@@ -583,12 +603,16 @@ em { font-style: italic; color: var(--accent); }
   line-height: 1.7;
   color: var(--gray-500);
   margin-bottom: 36px;
+}
+.gsap-ready .page-hero__desc {
   opacity: 0;
 }
 .page-hero__actions {
   display: flex;
   gap: 16px;
   align-items: center;
+}
+.gsap-ready .page-hero__actions {
   opacity: 0;
 }
 

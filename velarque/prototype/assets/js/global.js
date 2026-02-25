@@ -10,14 +10,21 @@
   // --- LOADER ---
   var loader = document.getElementById('loader');
   if (loader) {
+    document.body.style.overflow = 'hidden';
     window.addEventListener('load', function () {
       setTimeout(function () {
         loader.classList.add('hidden');
         document.body.style.overflow = '';
-      }, 2200);
+      }, 800);
     });
-    document.body.style.overflow = 'hidden';
   }
+  // Safety: always restore overflow even if loader element doesn't exist
+  // (prevents stuck hidden-overflow state)
+  window.addEventListener('load', function () {
+    setTimeout(function () {
+      document.body.style.overflow = '';
+    }, 1000);
+  });
 
   // --- CUSTOM CURSOR ---
   var cursor = document.getElementById('cursor');
