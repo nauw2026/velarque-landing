@@ -9,22 +9,21 @@
 
   // --- LOADER ---
   var loader = document.getElementById('loader');
+  function hideLoader() {
+    setTimeout(function () {
+      if (loader) loader.classList.add('hidden');
+      document.body.style.overflow = '';
+    }, 800);
+  }
   if (loader) {
     document.body.style.overflow = 'hidden';
-    window.addEventListener('load', function () {
-      setTimeout(function () {
-        loader.classList.add('hidden');
-        document.body.style.overflow = '';
-      }, 800);
-    });
   }
-  // Safety: always restore overflow even if loader element doesn't exist
-  // (prevents stuck hidden-overflow state)
-  window.addEventListener('load', function () {
-    setTimeout(function () {
-      document.body.style.overflow = '';
-    }, 1000);
-  });
+  // Handle loader regardless of readyState
+  if (document.readyState === 'complete') {
+    hideLoader();
+  } else {
+    window.addEventListener('load', hideLoader);
+  }
 
   // --- CUSTOM CURSOR ---
   var cursor = document.getElementById('cursor');
