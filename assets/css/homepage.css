@@ -1,0 +1,360 @@
+/* ============================================
+   VELARQUE — Homepage Styles
+   ============================================ */
+
+/* ============================
+   TRUST BAR (logos marquee)
+   ============================ */
+.trust-bar {
+  padding: 48px 0;
+  border-bottom: 1px solid var(--gray-100);
+  overflow: hidden;
+}
+.trust-bar__label {
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gray-400);
+  text-align: center;
+  margin-bottom: 32px;
+}
+.trust-bar__marquee {
+  position: relative;
+  overflow: hidden;
+}
+.trust-bar__track {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+  animation: marqueeScroll 25s linear infinite;
+  will-change: transform;
+}
+.trust-bar__logo {
+  flex-shrink: 0;
+  height: 28px;
+  opacity: 0.4;
+  filter: grayscale(100%);
+  transition: opacity 0.4s, filter 0.4s;
+}
+.trust-bar__logo:hover {
+  opacity: 0.8;
+  filter: grayscale(0%);
+}
+
+/* ============================
+   SERVICES (6 cards grid)
+   ============================ */
+.services {
+  padding: clamp(100px, 12vh, 180px) 0;
+}
+.services__header {
+  margin-bottom: 64px;
+}
+.services__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.service-card {
+  display: block;
+  padding: 40px 32px;
+  background: var(--gray-50);
+  border-radius: var(--radius);
+  border: 1px solid var(--gray-100);
+  transition: transform 0.5s var(--ease), border-color 0.5s var(--ease), background 0.5s var(--ease), box-shadow 0.5s var(--ease);
+  position: relative;
+}
+.service-card:hover {
+  transform: translateY(-8px);
+  border-color: transparent;
+  background: var(--white);
+  box-shadow: var(--shadow-card-hover), 0 0 40px var(--accent-glow);
+}
+.service-card__icon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 24px;
+  color: var(--gray-400);
+  transition: color 0.5s var(--ease), transform 0.5s var(--ease);
+}
+.service-card:hover .service-card__icon {
+  color: var(--accent);
+  transform: scale(1.1);
+}
+.service-card__icon svg {
+  width: 100%;
+  height: 100%;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.service-card__title {
+  font-family: var(--sans);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--black);
+  margin-bottom: 12px;
+}
+.service-card__text {
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--gray-500);
+  margin-bottom: 24px;
+}
+.service-card__link {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: gap 0.3s var(--ease), color 0.3s var(--ease);
+}
+.service-card__link svg {
+  transition: transform 0.3s var(--ease);
+}
+.service-card:hover .service-card__link { gap: 12px; }
+.service-card:hover .service-card__link svg { transform: translate(2px, -2px); }
+
+/* ============================
+   CASES (Splide slider)
+   ============================ */
+.cases {
+  padding: clamp(80px, 10vh, 140px) 0;
+  background: var(--gray-50);
+  overflow: hidden;
+}
+.cases__header {
+  margin-bottom: 64px;
+}
+.work__slider {
+  padding: 0 clamp(24px, 4vw, 80px);
+}
+.work__slider .splide__track {
+  overflow: visible;
+}
+.work-card {
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--white);
+  border: 1px solid var(--gray-100);
+  transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+}
+.work-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-card-hover);
+}
+.work-card__img {
+  position: relative;
+  aspect-ratio: 3/2;
+  overflow: hidden;
+}
+.work-card__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s var(--ease);
+}
+.work-card:hover .work-card__img img { transform: scale(1.05); }
+.work-card__overlay {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+}
+.work-card__tag {
+  display: inline-block;
+  padding: 6px 16px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  color: var(--white);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-radius: 100px;
+}
+.work-card__info { padding: 28px 32px; }
+.work-card__title {
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--black);
+  margin-bottom: 20px;
+}
+.work-card__metrics {
+  display: flex;
+  gap: 32px;
+}
+.work-card__metric { display: flex; flex-direction: column; gap: 4px; }
+.work-card__metric-val {
+  font-size: 22px;
+  font-weight: 300;
+  color: var(--black);
+  letter-spacing: -0.5px;
+}
+.work-card__metric-lab {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--gray-400);
+}
+
+/* ============================
+   WHY VELARQUE
+   ============================ */
+.why-velarque {
+  padding: clamp(100px, 12vh, 180px) 0;
+}
+.why-velarque__header {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 80px;
+  align-items: start;
+  margin-bottom: 64px;
+}
+
+/* ============================
+   TESTIMONIALS (Splide slider)
+   ============================ */
+.testimonials {
+  padding: clamp(100px, 14vh, 200px) 0;
+  background: var(--gray-50);
+}
+.testimonials__header {
+  margin-bottom: 64px;
+  text-align: center;
+}
+.testimonials__slider {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.testimonials__slider .splide__pagination {
+  margin-top: 48px;
+}
+.testimonials__slider .splide__pagination__page {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gray-300);
+  border: none;
+  cursor: pointer;
+  transition: all 0.4s var(--ease);
+  margin: 0 6px;
+  padding: 0;
+  opacity: 1;
+}
+.testimonials__slider .splide__pagination__page.is-active {
+  background: var(--accent);
+  width: 32px;
+  border-radius: 4px;
+}
+
+/* ============================
+   BLOG PREVIEW
+   ============================ */
+.blog-preview {
+  padding: clamp(100px, 12vh, 180px) 0;
+}
+.blog-preview__header {
+  margin-bottom: 64px;
+}
+.blog-preview__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+.blog-card {
+  display: block;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--white);
+  border: 1px solid var(--gray-100);
+  transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+}
+.blog-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-card-hover);
+}
+.blog-card__img {
+  aspect-ratio: 16/9;
+  overflow: hidden;
+}
+.blog-card__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s var(--ease);
+}
+.blog-card:hover .blog-card__img img { transform: scale(1.05); }
+.blog-card__content { padding: 28px; }
+.blog-card__meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.blog-card__category {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--accent);
+  padding: 4px 12px;
+  background: var(--accent-light);
+  border-radius: 100px;
+}
+.blog-card__date {
+  font-size: 13px;
+  color: var(--gray-400);
+}
+.blog-card__title {
+  font-family: var(--sans);
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--black);
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+.blog-card__excerpt {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--gray-500);
+  margin-bottom: 20px;
+}
+.blog-card__link {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: gap 0.3s var(--ease);
+}
+.blog-card__link svg {
+  transition: transform 0.3s var(--ease);
+}
+.blog-card:hover .blog-card__link { gap: 12px; }
+.blog-card:hover .blog-card__link svg { transform: translate(2px, -2px); }
+
+/* ============================
+   HOMEPAGE RESPONSIVE
+   ============================ */
+@media (max-width: 1024px) {
+  .services__grid { grid-template-columns: repeat(2, 1fr); }
+  .why-velarque__header { grid-template-columns: 1fr; gap: 24px; }
+  .blog-preview__grid { grid-template-columns: 1fr; max-width: 500px; margin-left: auto; margin-right: auto; }
+}
+
+@media (max-width: 768px) {
+  .services__grid { grid-template-columns: 1fr; }
+  .trust-bar__track { gap: 40px; }
+  .trust-bar__logo { height: 22px; }
+}
