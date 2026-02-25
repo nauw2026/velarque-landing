@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diseño y Programación Web | Velarque</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/landing.css">
+</head>
+<body>
+
+  <!-- CUSTOM CURSOR -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursorFollower"></div>
+
+  <!-- LOADER -->
+  <div class="loader" id="loader">
+    <div class="loader__inner">
+      <span class="loader__text">velarque</span>
+      <div class="loader__bar"><div class="loader__progress"></div></div>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="#" class="nav__logo">velarque<span>.</span></a>
+      <div class="nav__links" id="navLinks">
+        <a href="#work" data-hover="Trabajo">Trabajo</a>
+        <a href="#proceso" data-hover="Proceso">Proceso</a>
+        <a href="#faq" data-hover="FAQ">FAQ</a>
+      </div>
+      <a href="#contacto" class="nav__cta">Hablemos</a>
+      <button class="nav__toggle" id="navToggle" aria-label="Menú">
+        <span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__bg">
+      <div class="hero__gradient"></div>
+    </div>
+    <div class="container hero__container">
+      <div class="hero__eyebrow">
+        <span class="hero__line"></span>
+        <span>Diseño & Desarrollo Web</span>
+      </div>
+      <h1 class="hero__title" id="heroTitle">
+        <span class="hero__title-line">
+          <span class="hero__word">Creamos webs</span>
+        </span>
+        <span class="hero__title-line">
+          <span class="hero__word">que <em>venden</em> por ti</span>
+        </span>
+      </h1>
+      <div class="hero__bottom">
+        <p class="hero__desc">
+          Diseño a medida. Código limpio. Entrega en semanas, no en meses. Cada proyecto es una pieza única, pensada para convertir.
+        </p>
+        <a href="#contacto" class="hero__cta magnetic" data-magnetic>
+          <span class="hero__cta-text">Iniciar proyecto</span>
+          <span class="hero__cta-arrow">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          </span>
+        </a>
+      </div>
+    </div>
+    <div class="hero__scroll">
+      <span>Scroll</span>
+      <div class="hero__scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <section class="marquee-section">
+    <div class="marquee">
+      <div class="marquee__track">
+        <span class="marquee__item">Diseño UI/UX</span>
+        <span class="marquee__sep">&mdash;</span>
+        <span class="marquee__item">Desarrollo a medida</span>
+        <span class="marquee__sep">&mdash;</span>
+        <span class="marquee__item">WordPress Custom</span>
+        <span class="marquee__sep">&mdash;</span>
+        <span class="marquee__item">E-commerce</span>
+        <span class="marquee__sep">&mdash;</span>
+        <span class="marquee__item">Landing Pages</span>
+        <span class="marquee__sep">&mdash;</span>
+        <span class="marquee__item">SEO Técnico</span>
+        <span class="marquee__sep">&mdash;</span>
+        <span class="marquee__item">Diseño UI/UX</span>
+        <span class="marquee__sep">&mdash;</span>
+        <span class="marquee__item">Desarrollo a medida</span>
+        <span class="marquee__sep">&mdash;</span>
+        <span class="marquee__item">WordPress Custom</span>
+        <span class="marquee__sep">&mdash;</span>
+        <span class="marquee__item">E-commerce</span>
+        <span class="marquee__sep">&mdash;</span>
+        <span class="marquee__item">Landing Pages</span>
+        <span class="marquee__sep">&mdash;</span>
+        <span class="marquee__item">SEO Técnico</span>
+        <span class="marquee__sep">&mdash;</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRO / PAIN POINTS -->
+  <section class="intro">
+    <div class="container">
+      <div class="intro__grid">
+        <div class="intro__left">
+          <p class="intro__label">( El problema )</p>
+        </div>
+        <div class="intro__right">
+          <h2 class="intro__title reveal-text">
+            Tu web actual no transmite lo que tu marca vale. Carga lento, no convierte y se ve igual que las de tu competencia.
+          </h2>
+          <p class="intro__subtitle reveal-text">
+            Y cada día que pasa, pierdes clientes que se van a empresas con mejor presencia digital. No necesitas otra web genérica &mdash; necesitas una que trabaje por ti.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTION VISUAL CARDS -->
+  <section class="solutions" id="servicios">
+    <div class="container">
+      <div class="solutions__header">
+        <p class="solutions__label">( La solución )</p>
+        <h2 class="solutions__title reveal-text">Lo hacemos <em>diferente</em></h2>
+      </div>
+    </div>
+    <div class="solutions__cards">
+      <div class="solution-card" data-parallax="0.05">
+        <div class="solution-card__img">
+          <img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=600&h=750&fit=crop&q=80" alt="Diseño" loading="lazy">
+        </div>
+        <div class="solution-card__content">
+          <span class="solution-card__num">01</span>
+          <h3 class="solution-card__title">Diseño que<br><em>conecta</em></h3>
+          <p class="solution-card__text">Cada píxel tiene un propósito. Interfaces que guían al usuario hacia la acción. Bonito por fuera, estratégico por dentro.</p>
+        </div>
+      </div>
+      <div class="solution-card" data-parallax="0.1">
+        <div class="solution-card__img">
+          <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=750&fit=crop&q=80" alt="Código" loading="lazy">
+        </div>
+        <div class="solution-card__content">
+          <span class="solution-card__num">02</span>
+          <h3 class="solution-card__title">Código que<br><em>rinde</em></h3>
+          <p class="solution-card__text">Programado a mano. Sin constructores. Webs que cargan en menos de 2 segundos y que Google premia con mejor posicionamiento.</p>
+        </div>
+      </div>
+      <div class="solution-card" data-parallax="0.15">
+        <div class="solution-card__img">
+          <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&h=750&fit=crop&q=80" alt="Entrega" loading="lazy">
+        </div>
+        <div class="solution-card__content">
+          <span class="solution-card__num">03</span>
+          <h3 class="solution-card__title">Entrega que<br><em>cumple</em></h3>
+          <p class="solution-card__text">Fecha comprometida y cumplida. Sprints cortos, comunicación constante y cero sorpresas en la factura.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BAND -->
+  <section class="stats">
+    <div class="container">
+      <div class="stats__grid">
+        <div class="stat" data-count="50">
+          <span class="stat__number">50+</span>
+          <span class="stat__label">Proyectos<br>entregados</span>
+        </div>
+        <div class="stat" data-count="3">
+          <span class="stat__number">3</span>
+          <span class="stat__label">Semanas de<br>entrega media</span>
+        </div>
+        <div class="stat" data-count="98">
+          <span class="stat__number">98%</span>
+          <span class="stat__label">Satisfacción<br>del cliente</span>
+        </div>
+        <div class="stat" data-count="4.2">
+          <span class="stat__number">x4.2</span>
+          <span class="stat__label">Retorno medio<br>en paid media</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process" id="proceso">
+    <div class="container">
+      <div class="process__header">
+        <p class="process__label">( Proceso )</p>
+        <h2 class="process__title reveal-text">De la idea a la web<br>en <em>4 pasos</em></h2>
+      </div>
+      <div class="process__steps">
+        <div class="process-step">
+          <div class="process-step__left">
+            <span class="process-step__num">01</span>
+            <span class="process-step__time">1-2 días</span>
+          </div>
+          <div class="process-step__center">
+            <h3 class="process-step__title">Escuchamos</h3>
+            <p class="process-step__text">Nos sentamos contigo para entender tu negocio, tu público y tus objetivos. Sin esta base, no escribimos ni una línea de código.</p>
+          </div>
+          <div class="process-step__visual">
+            <img src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=400&h=280&fit=crop&q=80" alt="Reunión" loading="lazy">
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="process-step__left">
+            <span class="process-step__num">02</span>
+            <span class="process-step__time">3-5 días</span>
+          </div>
+          <div class="process-step__center">
+            <h3 class="process-step__title">Diseñamos</h3>
+            <p class="process-step__text">Creamos wireframes y un diseño visual completo en Figma. No programamos hasta que el diseño te encanta.</p>
+          </div>
+          <div class="process-step__visual">
+            <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=280&fit=crop&q=80" alt="Diseño" loading="lazy">
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="process-step__left">
+            <span class="process-step__num">03</span>
+            <span class="process-step__time">5-10 días</span>
+          </div>
+          <div class="process-step__center">
+            <h3 class="process-step__title">Programamos</h3>
+            <p class="process-step__text">Código limpio, optimizado para SEO y rendimiento. Cada funcionalidad se prueba a fondo antes de avanzar.</p>
+          </div>
+          <div class="process-step__visual">
+            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&h=280&fit=crop&q=80" alt="Programación" loading="lazy">
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="process-step__left">
+            <span class="process-step__num">04</span>
+            <span class="process-step__time">1-2 días</span>
+          </div>
+          <div class="process-step__center">
+            <h3 class="process-step__title">Lanzamos</h3>
+            <p class="process-step__text">Hosting, dominio, analítica. Te formamos para que gestiones tu contenido de forma autónoma.</p>
+          </div>
+          <div class="process-step__visual">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=280&fit=crop&q=80" alt="Lanzamiento" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK / CASES - HORIZONTAL SCROLL -->
+  <section class="work" id="work">
+    <div class="container">
+      <div class="work__header">
+        <p class="work__label">( Trabajo seleccionado )</p>
+        <h2 class="work__title reveal-text">Resultados <em>reales</em></h2>
+      </div>
+    </div>
+    <div class="work__slider" id="workSlider">
+      <div class="work__track">
+        <article class="work-card">
+          <div class="work-card__img">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=540&fit=crop&q=80" alt="E-commerce premium" loading="lazy">
+            <div class="work-card__overlay">
+              <span class="work-card__tag">E-commerce</span>
+            </div>
+          </div>
+          <div class="work-card__info">
+            <h3 class="work-card__title">Tienda online premium</h3>
+            <div class="work-card__metrics">
+              <div class="work-card__metric">
+                <span class="work-card__metric-val">+180%</span>
+                <span class="work-card__metric-lab">conversión</span>
+              </div>
+              <div class="work-card__metric">
+                <span class="work-card__metric-val">2.5 sem</span>
+                <span class="work-card__metric-lab">entrega</span>
+              </div>
+              <div class="work-card__metric">
+                <span class="work-card__metric-val">96</span>
+                <span class="work-card__metric-lab">lighthouse</span>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="work-card">
+          <div class="work-card__img">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=540&fit=crop&q=80" alt="SaaS Landing" loading="lazy">
+            <div class="work-card__overlay">
+              <span class="work-card__tag">SaaS</span>
+            </div>
+          </div>
+          <div class="work-card__info">
+            <h3 class="work-card__title">Landing de captación</h3>
+            <div class="work-card__metrics">
+              <div class="work-card__metric">
+                <span class="work-card__metric-val">12%</span>
+                <span class="work-card__metric-lab">conversión</span>
+              </div>
+              <div class="work-card__metric">
+                <span class="work-card__metric-val">10 días</span>
+                <span class="work-card__metric-lab">entrega</span>
+              </div>
+              <div class="work-card__metric">
+                <span class="work-card__metric-val">+2.4K</span>
+                <span class="work-card__metric-lab">registros/mes</span>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="work-card">
+          <div class="work-card__img">
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=540&fit=crop&q=80" alt="Web corporativa" loading="lazy">
+            <div class="work-card__overlay">
+              <span class="work-card__tag">Corporativa</span>
+            </div>
+          </div>
+          <div class="work-card__info">
+            <h3 class="work-card__title">Web corporativa</h3>
+            <div class="work-card__metrics">
+              <div class="work-card__metric">
+                <span class="work-card__metric-val">35</span>
+                <span class="work-card__metric-lab">leads/mes</span>
+              </div>
+              <div class="work-card__metric">
+                <span class="work-card__metric-val">3 sem</span>
+                <span class="work-card__metric-lab">entrega</span>
+              </div>
+              <div class="work-card__metric">
+                <span class="work-card__metric-val">1.2s</span>
+                <span class="work-card__metric-lab">carga</span>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="work-card">
+          <div class="work-card__img">
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=540&fit=crop&q=80" alt="Plataforma digital" loading="lazy">
+            <div class="work-card__overlay">
+              <span class="work-card__tag">Plataforma</span>
+            </div>
+          </div>
+          <div class="work-card__info">
+            <h3 class="work-card__title">Plataforma educativa</h3>
+            <div class="work-card__metrics">
+              <div class="work-card__metric">
+                <span class="work-card__metric-val">+500</span>
+                <span class="work-card__metric-lab">usuarios/mes</span>
+              </div>
+              <div class="work-card__metric">
+                <span class="work-card__metric-val">4 sem</span>
+                <span class="work-card__metric-lab">entrega</span>
+              </div>
+              <div class="work-card__metric">
+                <span class="work-card__metric-val">94</span>
+                <span class="work-card__metric-lab">lighthouse</span>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIAL -->
+  <section class="testimonial-section">
+    <div class="container">
+      <div class="testimonial">
+        <div class="testimonial__marks">&ldquo;</div>
+        <blockquote class="testimonial__text reveal-text">
+          Es la mejor inversión que hemos hecho en marketing. La web que nos hizo Velarque nos genera clientes cada semana sin tocar nada.
+        </blockquote>
+        <div class="testimonial__author">
+          <div class="testimonial__avatar">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&h=120&fit=crop&q=80" alt="Carlos Martínez" loading="lazy">
+          </div>
+          <div>
+            <span class="testimonial__name">Carlos Martínez</span>
+            <span class="testimonial__role">CEO &mdash; TechStartup</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INCLUDES -->
+  <section class="includes">
+    <div class="container">
+      <div class="includes__layout">
+        <div class="includes__left">
+          <p class="includes__label">( Todo incluido )</p>
+          <h2 class="includes__title reveal-text">Cada proyecto incluye</h2>
+          <div class="includes__price">
+            <span class="includes__price-from">Desde</span>
+            <span class="includes__price-amount">2.500&euro;</span>
+          </div>
+          <a href="#contacto" class="btn-main magnetic" data-magnetic>
+            <span>Pedir presupuesto</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          </a>
+        </div>
+        <div class="includes__right">
+          <div class="includes__item">
+            <span class="includes__check">&#10003;</span>
+            <span>Diseño UI/UX personalizado</span>
+          </div>
+          <div class="includes__item">
+            <span class="includes__check">&#10003;</span>
+            <span>Programación a medida</span>
+          </div>
+          <div class="includes__item">
+            <span class="includes__check">&#10003;</span>
+            <span>100% responsive</span>
+          </div>
+          <div class="includes__item">
+            <span class="includes__check">&#10003;</span>
+            <span>Optimización SEO técnico</span>
+          </div>
+          <div class="includes__item">
+            <span class="includes__check">&#10003;</span>
+            <span>Google Analytics + Search Console</span>
+          </div>
+          <div class="includes__item">
+            <span class="includes__check">&#10003;</span>
+            <span>Formularios funcionales</span>
+          </div>
+          <div class="includes__item">
+            <span class="includes__check">&#10003;</span>
+            <span>SSL y seguridad</span>
+          </div>
+          <div class="includes__item">
+            <span class="includes__check">&#10003;</span>
+            <span>Formación para tu equipo</span>
+          </div>
+          <div class="includes__item">
+            <span class="includes__check">&#10003;</span>
+            <span>30 días de soporte incluidos</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <div class="faq__header">
+        <p class="faq__label">( FAQ )</p>
+        <h2 class="faq__title reveal-text">Preguntas<br><em>frecuentes</em></h2>
+      </div>
+      <div class="faq__list">
+        <details class="faq-item" open>
+          <summary class="faq-item__q">
+            <span>&#191;Cuánto cuesta una web con Velarque?</span>
+            <span class="faq-item__icon"></span>
+          </summary>
+          <div class="faq-item__a">
+            <p>Nuestras webs parten desde 2.500&euro; para una web corporativa de 5 páginas. Te damos presupuesto cerrado antes de empezar: sin sorpresas, sin costes ocultos.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-item__q">
+            <span>&#191;Cuánto tardáis en entregar?</span>
+            <span class="faq-item__icon"></span>
+          </summary>
+          <div class="faq-item__a">
+            <p>Entre 2 y 4 semanas para la mayoría de proyectos. Webs más complejas pueden llevar 4-6 semanas. Te damos fecha exacta en el presupuesto.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-item__q">
+            <span>&#191;Trabajáis con WordPress?</span>
+            <span class="faq-item__icon"></span>
+          </summary>
+          <div class="faq-item__a">
+            <p>Sí, creamos temas de WordPress personalizados, sin page builders. También trabajamos con otras tecnologías si el proyecto lo requiere.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-item__q">
+            <span>&#191;Qué pasa después de la entrega?</span>
+            <span class="faq-item__icon"></span>
+          </summary>
+          <div class="faq-item__a">
+            <p>Incluimos 30 días de soporte gratuito y te formamos para que gestiones tu contenido. Después, ofrecemos planes de mantenimiento opcionales.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-item__q">
+            <span>&#191;También hacéis SEO y marketing?</span>
+            <span class="faq-item__icon"></span>
+          </summary>
+          <div class="faq-item__a">
+            <p>Sí. Somos una agencia 360. Web, posicionamiento, paid media, automatización, CRM &mdash; lo cubrimos todo bajo el mismo equipo.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA / CONTACT -->
+  <section class="contact" id="contacto">
+    <div class="container">
+      <div class="contact__layout">
+        <div class="contact__left">
+          <p class="contact__label">( Empecemos )</p>
+          <h2 class="contact__title reveal-text">Tu próximo proyecto<br>empieza <em>aquí</em></h2>
+          <p class="contact__desc">Cuéntanos qué necesitas. Propuesta personalizada en 48h. Sin compromiso.</p>
+          <div class="contact__availability">
+            <span class="contact__dot"></span>
+            <span>2 plazas disponibles este mes</span>
+          </div>
+        </div>
+        <form class="contact-form" onsubmit="event.preventDefault()">
+          <div class="contact-form__group">
+            <input type="text" id="name" name="name" required placeholder=" ">
+            <label for="name">Nombre *</label>
+          </div>
+          <div class="contact-form__group">
+            <input type="email" id="email" name="email" required placeholder=" ">
+            <label for="email">Email *</label>
+          </div>
+          <div class="contact-form__row">
+            <div class="contact-form__group">
+              <input type="text" id="company" name="company" placeholder=" ">
+              <label for="company">Empresa</label>
+            </div>
+            <div class="contact-form__group">
+              <select id="budget" name="budget" required>
+                <option value="" disabled selected></option>
+                <option>&lt; 2.500&euro;</option>
+                <option>2.500&euro; &ndash; 5.000&euro;</option>
+                <option>5.000&euro; &ndash; 10.000&euro;</option>
+                <option>+ 10.000&euro;</option>
+              </select>
+              <label for="budget">Presupuesto</label>
+            </div>
+          </div>
+          <div class="contact-form__group">
+            <textarea id="message" name="message" rows="3" placeholder=" "></textarea>
+            <label for="message">Cuéntanos sobre tu proyecto</label>
+          </div>
+          <button type="submit" class="btn-main btn-main--full magnetic" data-magnetic>
+            <span>Solicitar propuesta</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          </button>
+          <p class="contact-form__note">Respondemos en &lt;48h. Tu información es confidencial.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a href="#" class="nav__logo footer__logo">velarque<span>.</span></a>
+          <p class="footer__desc">Agencia de marketing digital 360 en Madrid.</p>
+        </div>
+        <div class="footer__links">
+          <div class="footer__col">
+            <span class="footer__col-title">Servicios</span>
+            <a href="#">Inteligencia Artificial</a>
+            <a href="#">Paid Media</a>
+            <a href="#">Desarrollo Web</a>
+            <a href="#">CRM</a>
+            <a href="#">Automatización</a>
+          </div>
+          <div class="footer__col">
+            <span class="footer__col-title">Empresa</span>
+            <a href="#">Sobre nosotros</a>
+            <a href="#">Casos de éxito</a>
+            <a href="#">Blog</a>
+            <a href="#">Contacto</a>
+          </div>
+          <div class="footer__col">
+            <span class="footer__col-title">Contacto</span>
+            <a href="mailto:info@velarque.com">info@velarque.com</a>
+            <a href="tel:+34912812152">+34 912 812 152</a>
+            <span>Madrid, España</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; 2026 Velarque</span>
+        <div class="footer__legal">
+          <a href="#">Aviso Legal</a>
+          <a href="#">Privacidad</a>
+          <a href="#">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/landing.js"></script>
+</body>
+</html>
