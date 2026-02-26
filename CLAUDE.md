@@ -3,6 +3,11 @@
 ## Workspace
 Workspace central de desarrollo web. Cada proyecto vive en su propia carpeta con un `brief.md` que define su identidad y requisitos.
 
+## Siempre hacer primero
+- **Antes de escribir cualquier código frontend**, invocar la skill `frontend-design` usando la herramienta Skill. Sin excepciones.
+- Esto aplica a cualquier tarea que implique HTML, CSS, JS, componentes UI, layouts, páginas, o cualquier archivo que se renderice en el navegador.
+- No saltarse este paso aunque la tarea parezca pequeña (un botón, un color, un ajuste de spacing).
+
 ## Flujo de trabajo
 1. Copy (siempre primero) → 2. Desarrollo (WordPress / Shopify / otro CMS)
 
