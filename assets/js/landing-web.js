@@ -37,9 +37,9 @@
 
         var pathEl = document.createElementNS(svgNS, 'path');
         pathEl.setAttribute('d', d);
-        pathEl.setAttribute('stroke', '#0a0a0a');
-        pathEl.setAttribute('stroke-width', String(0.5 + i * 0.03));
-        pathEl.setAttribute('stroke-opacity', String(Math.min(0.1 + i * 0.03, 1)));
+        pathEl.setAttribute('stroke', '#1a7efb');
+        pathEl.setAttribute('stroke-width', String(0.6 + i * 0.04));
+        pathEl.setAttribute('stroke-opacity', String(0.03 + i * 0.004));
         svg.appendChild(pathEl);
         paths.push(pathEl);
       }
@@ -71,7 +71,7 @@
       // Subtle opacity breathe
       var baseOpacity = parseFloat(path.getAttribute('stroke-opacity'));
       gsap.to(path, {
-        strokeOpacity: Math.min(baseOpacity * 1.8, 0.8),
+        strokeOpacity: Math.min(baseOpacity * 2, 0.25),
         duration: 8 + Math.random() * 6,
         ease: 'sine.inOut',
         repeat: -1,
