@@ -85,7 +85,6 @@
   display: flex;
   gap: 0;
   white-space: nowrap;
-  animation: lwMarquee 25s linear infinite;
   will-change: transform;
 }
 .lw-marquee__item {
@@ -243,75 +242,120 @@
 }
 
 /* ============================
-   PROCESS
+   HIGHLIGHT EFFECT — yellow sweep
+   ============================ */
+.lw-highlight {
+  position: relative;
+  display: inline;
+  background-image: linear-gradient(120deg, #FFF991 0%, #ffe566 100%);
+  background-repeat: no-repeat;
+  background-size: 0% 100%;
+  background-position: 0 0;
+  padding: 2px 6px;
+  margin: 0 -6px;
+  border-radius: 4px;
+  transition: background-size 0s;
+}
+.lw-highlight.is-active {
+  background-size: 100% 100%;
+  transition: background-size 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ============================
+   3D TILT PERSPECTIVE — solution cards
+   ============================ */
+.lw-solution-card[data-lw="tilt"] {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+.lw-solution-card[data-lw="tilt"]:hover {
+  transform: none;
+}
+.lw-solution-card__content {
+  transform: translateZ(20px);
+}
+
+/* ============================
+   PROCESS — Horizontal Scroll Pinned
    ============================ */
 .lw-process {
-  padding: clamp(100px, 12vh, 160px) 0;
+  padding: clamp(100px, 12vh, 160px) 0 0;
 }
 .lw-process__header {
   margin-bottom: 64px;
 }
-.lw-process__steps {
+.lw-process__hscroll {
+  position: relative;
+  overflow: hidden;
+}
+.lw-process__track {
   display: flex;
-  flex-direction: column;
+  gap: 32px;
+  padding: 40px clamp(24px, 4vw, 80px) 80px;
+  width: max-content;
 }
-.lw-step {
-  display: grid;
-  grid-template-columns: 120px 1fr 280px;
-  gap: 40px;
-  align-items: center;
-  padding: 40px 0;
-  border-top: 1px solid var(--gray-200);
+.lw-hstep {
+  flex: 0 0 420px;
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
 }
-.lw-step__left {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+.lw-hstep:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
 }
-.lw-step__num {
+.lw-hstep__num {
   font-family: var(--display);
-  font-size: 48px;
-  font-weight: 500;
-  color: var(--gray-200);
+  font-size: 80px;
+  font-weight: 600;
+  color: var(--gray-100);
   line-height: 1;
-  letter-spacing: -2px;
+  letter-spacing: -4px;
+  padding: 28px 28px 0;
 }
-.lw-step__time {
+.lw-hstep__img {
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  margin: 0 20px;
+  border-radius: calc(var(--radius) - 4px);
+}
+.lw-hstep__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s var(--ease);
+}
+.lw-hstep:hover .lw-hstep__img img {
+  transform: scale(1.04);
+}
+.lw-hstep__content {
+  padding: 24px 28px 32px;
+}
+.lw-hstep__time {
+  font-family: var(--display);
   font-size: 12px;
   font-weight: 500;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
   color: var(--accent);
+  display: block;
+  margin-bottom: 10px;
 }
-.lw-step__title {
+.lw-hstep__title {
   font-family: var(--display);
-  font-size: clamp(22px, 2.5vw, 32px);
+  font-size: 24px;
   font-weight: 500;
   color: var(--black);
-  margin-bottom: 12px;
   letter-spacing: -0.02em;
+  margin-bottom: 10px;
 }
-.lw-step__text {
+.lw-hstep__text {
   font-size: 15px;
   font-weight: 400;
   line-height: 1.7;
   color: var(--gray-500);
-  max-width: 400px;
-}
-.lw-step__visual {
-  border-radius: var(--radius);
-  overflow: hidden;
-  aspect-ratio: 3/2;
-  border: 1px solid var(--gray-200);
-}
-.lw-step__visual img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s var(--ease);
-}
-.lw-step:hover .lw-step__visual img {
-  transform: scale(1.03);
 }
 
 /* ============================
@@ -519,14 +563,20 @@
 }
 
 /* ============================
+   STATS — dramatic pin styling
+   ============================ */
+.lw-stats.is-counting .lw-stat__number {
+  transition: color 0.4s ease;
+}
+
+/* ============================
    RESPONSIVE
    ============================ */
 @media (max-width: 1024px) {
   .lw-pain__grid { grid-template-columns: 1fr; gap: 20px; }
   .lw-solutions__cards { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; padding: 0 24px; }
   .lw-stats__grid { grid-template-columns: repeat(2, 1fr); gap: 40px; }
-  .lw-step { grid-template-columns: 100px 1fr; gap: 28px; }
-  .lw-step__visual { display: none; }
+  .lw-hstep { flex: 0 0 340px; }
   .lw-includes__layout { grid-template-columns: 1fr; }
   .lw-contact__layout { grid-template-columns: 1fr; }
 }
@@ -536,9 +586,9 @@
   .lw-hero .hero__word { font-size: clamp(32px, 10vw, 48px); letter-spacing: -0.02em; }
 
   .lw-stats__grid { grid-template-columns: repeat(2, 1fr); }
-  .lw-step { grid-template-columns: 1fr; gap: 14px; }
-  .lw-step__left { flex-direction: row; align-items: baseline; gap: 14px; }
-  .lw-step__num { font-size: 32px; }
+  .lw-hstep { flex: 0 0 300px; }
+  .lw-hstep__num { font-size: 56px; }
+  .lw-process__track { gap: 20px; padding: 28px 24px 60px; }
 
   .lw-work .splide__slide { flex: 0 0 85vw; }
 }

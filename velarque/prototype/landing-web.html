@@ -62,7 +62,7 @@
   <section class="lw-hero" data-gsap="hero">
     <div class="lw-hero__glow"></div>
     <div class="container hero__container">
-      <h1 class="hero__title">
+      <h1 class="hero__title" data-lw="char-split">
         <span class="hero__title-line">
           <span class="hero__word">Creamos webs</span>
         </span>
@@ -81,8 +81,8 @@
     </div>
   </section>
 
-  <!-- MARQUEE -->
-  <section class="lw-marquee">
+  <!-- MARQUEE — scroll-velocity linked -->
+  <section class="lw-marquee" data-lw="velocity-marquee">
     <div class="lw-marquee__track">
       <span class="lw-marquee__item">Diseño UI/UX</span>
       <span class="lw-marquee__sep">/</span>
@@ -111,7 +111,7 @@
     </div>
   </section>
 
-  <!-- PAIN POINTS -->
+  <!-- PAIN POINTS — with highlight effect -->
   <section class="lw-pain">
     <div class="container">
       <div class="lw-pain__grid">
@@ -119,8 +119,8 @@
           <p class="section-label reveal-text">( El problema )</p>
         </div>
         <div class="lw-pain__right">
-          <h2 class="lw-pain__title reveal-text">
-            Tu web actual no transmite lo que tu marca vale. Carga lento, no convierte y se ve igual que las de tu competencia
+          <h2 class="lw-pain__title" data-lw="highlight-text">
+            Tu web actual <span class="lw-highlight" data-lw="highlight">no transmite</span> lo que tu marca vale. Carga lento, <span class="lw-highlight" data-lw="highlight">no convierte</span> y se ve igual que las de tu competencia
           </h2>
           <p class="lw-pain__subtitle reveal-text">
             Y cada día que pasa, pierdes clientes que se van a empresas con mejor presencia digital. No necesitas otra web genérica &mdash; necesitas una que trabaje por ti.
@@ -130,7 +130,7 @@
     </div>
   </section>
 
-  <!-- SOLUTIONS — 3 pillars -->
+  <!-- SOLUTIONS — 3 pillars with 3D tilt -->
   <section class="lw-solutions" id="servicios">
     <div class="container">
       <div class="lw-solutions__header">
@@ -139,7 +139,7 @@
       </div>
     </div>
     <div class="lw-solutions__cards" data-gsap="stagger">
-      <div class="lw-solution-card">
+      <div class="lw-solution-card" data-lw="tilt">
         <div class="lw-solution-card__img">
           <img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=600&h=750&fit=crop&q=80" alt="Diseño" loading="lazy">
         </div>
@@ -149,7 +149,7 @@
           <p class="lw-solution-card__text">Cada píxel tiene un propósito. Interfaces que guían al usuario hacia la acción. Bonito por fuera, estratégico por dentro.</p>
         </div>
       </div>
-      <div class="lw-solution-card">
+      <div class="lw-solution-card" data-lw="tilt">
         <div class="lw-solution-card__img">
           <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=750&fit=crop&q=80" alt="Código" loading="lazy">
         </div>
@@ -159,7 +159,7 @@
           <p class="lw-solution-card__text">Programado a mano. Sin constructores. Webs que cargan en menos de 2 segundos y que Google premia con mejor posicionamiento.</p>
         </div>
       </div>
-      <div class="lw-solution-card">
+      <div class="lw-solution-card" data-lw="tilt">
         <div class="lw-solution-card__img">
           <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&h=750&fit=crop&q=80" alt="Entrega" loading="lazy">
         </div>
@@ -172,10 +172,10 @@
     </div>
   </section>
 
-  <!-- STATS -->
-  <section class="lw-stats">
+  <!-- STATS — dramatic counter -->
+  <section class="lw-stats" data-lw="stats-pin">
     <div class="container">
-      <div class="lw-stats__grid" data-gsap="stagger">
+      <div class="lw-stats__grid">
         <div class="lw-stat">
           <span class="lw-stat__number" data-count="50" data-suffix="+">0</span>
           <span class="lw-stat__label">Proyectos<br>entregados</span>
@@ -196,64 +196,58 @@
     </div>
   </section>
 
-  <!-- PROCESS -->
+  <!-- PROCESS — horizontal scroll pinned -->
   <section class="lw-process" id="proceso">
     <div class="container">
       <div class="lw-process__header">
         <p class="section-label reveal-text">( Proceso )</p>
         <h2 class="section-title reveal-text">De la idea a la web en <em>4 pasos</em></h2>
       </div>
-      <div class="lw-process__steps">
-        <div class="lw-step reveal-up">
-          <div class="lw-step__left">
-            <span class="lw-step__num">01</span>
-            <span class="lw-step__time">1-2 días</span>
+    </div>
+    <div class="lw-process__hscroll" data-lw="horizontal-scroll">
+      <div class="lw-process__track">
+        <div class="lw-hstep">
+          <div class="lw-hstep__num">01</div>
+          <div class="lw-hstep__img">
+            <img src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=560&h=400&fit=crop&q=80" alt="Reunión" loading="lazy">
           </div>
-          <div class="lw-step__center">
-            <h3 class="lw-step__title">Escuchamos</h3>
-            <p class="lw-step__text">Nos sentamos contigo para entender tu negocio, tu público y tus objetivos. Sin esta base, no escribimos ni una línea de código.</p>
-          </div>
-          <div class="lw-step__visual">
-            <img src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=400&h=280&fit=crop&q=80" alt="Reunión" loading="lazy">
-          </div>
-        </div>
-        <div class="lw-step reveal-up">
-          <div class="lw-step__left">
-            <span class="lw-step__num">02</span>
-            <span class="lw-step__time">3-5 días</span>
-          </div>
-          <div class="lw-step__center">
-            <h3 class="lw-step__title">Diseñamos</h3>
-            <p class="lw-step__text">Creamos wireframes y un diseño visual completo en Figma. No programamos hasta que el diseño te encanta.</p>
-          </div>
-          <div class="lw-step__visual">
-            <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=280&fit=crop&q=80" alt="Diseño" loading="lazy">
+          <div class="lw-hstep__content">
+            <span class="lw-hstep__time">1-2 días</span>
+            <h3 class="lw-hstep__title">Escuchamos</h3>
+            <p class="lw-hstep__text">Nos sentamos contigo para entender tu negocio, tu público y tus objetivos. Sin esta base, no escribimos ni una línea de código.</p>
           </div>
         </div>
-        <div class="lw-step reveal-up">
-          <div class="lw-step__left">
-            <span class="lw-step__num">03</span>
-            <span class="lw-step__time">5-10 días</span>
+        <div class="lw-hstep">
+          <div class="lw-hstep__num">02</div>
+          <div class="lw-hstep__img">
+            <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=560&h=400&fit=crop&q=80" alt="Diseño" loading="lazy">
           </div>
-          <div class="lw-step__center">
-            <h3 class="lw-step__title">Programamos</h3>
-            <p class="lw-step__text">Código limpio, optimizado para SEO y rendimiento. Cada funcionalidad se prueba a fondo antes de avanzar.</p>
-          </div>
-          <div class="lw-step__visual">
-            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&h=280&fit=crop&q=80" alt="Programación" loading="lazy">
+          <div class="lw-hstep__content">
+            <span class="lw-hstep__time">3-5 días</span>
+            <h3 class="lw-hstep__title">Diseñamos</h3>
+            <p class="lw-hstep__text">Creamos wireframes y un diseño visual completo en Figma. No programamos hasta que el diseño te encanta.</p>
           </div>
         </div>
-        <div class="lw-step reveal-up">
-          <div class="lw-step__left">
-            <span class="lw-step__num">04</span>
-            <span class="lw-step__time">1-2 días</span>
+        <div class="lw-hstep">
+          <div class="lw-hstep__num">03</div>
+          <div class="lw-hstep__img">
+            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=560&h=400&fit=crop&q=80" alt="Programación" loading="lazy">
           </div>
-          <div class="lw-step__center">
-            <h3 class="lw-step__title">Lanzamos</h3>
-            <p class="lw-step__text">Hosting, dominio, analítica. Te formamos para que gestiones tu contenido de forma autónoma.</p>
+          <div class="lw-hstep__content">
+            <span class="lw-hstep__time">5-10 días</span>
+            <h3 class="lw-hstep__title">Programamos</h3>
+            <p class="lw-hstep__text">Código limpio, optimizado para SEO y rendimiento. Cada funcionalidad se prueba a fondo antes de avanzar.</p>
           </div>
-          <div class="lw-step__visual">
-            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=280&fit=crop&q=80" alt="Lanzamiento" loading="lazy">
+        </div>
+        <div class="lw-hstep">
+          <div class="lw-hstep__num">04</div>
+          <div class="lw-hstep__img">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=560&h=400&fit=crop&q=80" alt="Lanzamiento" loading="lazy">
+          </div>
+          <div class="lw-hstep__content">
+            <span class="lw-hstep__time">1-2 días</span>
+            <h3 class="lw-hstep__title">Lanzamos</h3>
+            <p class="lw-hstep__text">Hosting, dominio, analítica. Te formamos para que gestiones tu contenido de forma autónoma.</p>
           </div>
         </div>
       </div>
@@ -641,6 +635,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4/dist/js/splide.min.js"></script>
   <script src="assets/js/global.js"></script>
   <script src="assets/js/animations.js"></script>
+  <script src="assets/js/landing-web.js"></script>
   <script>
     // Landing page Splide slider
     (function () {
