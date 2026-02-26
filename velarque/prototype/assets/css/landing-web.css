@@ -5,148 +5,71 @@
    Requires: global.css, animations.js
    ============================================ */
 
-/* Dark loader override */
-.loader { background: #111827; }
-.loader__text { color: var(--white); }
-.loader__bar { background: rgba(255, 255, 255, 0.1); }
-
 /* ============================
-   HERO — Dark with geometric shapes
+   HERO — Light with warm yellow glow
    ============================ */
 .lw-hero {
   position: relative;
   min-height: 100vh;
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: 160px 0 100px;
   overflow: hidden;
-  background: #111827;
+  background: var(--white);
 }
-.lw-hero__ambient {
+
+/* Warm yellow glow — central radial */
+.lw-hero__glow {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background:
-    radial-gradient(ellipse at 70% 20%, rgba(26, 126, 251, 0.07) 0%, transparent 50%),
-    radial-gradient(ellipse at 20% 80%, rgba(195, 247, 58, 0.04) 0%, transparent 40%);
-  filter: blur(40px);
+  background-image: radial-gradient(circle at center, #FFF991 0%, transparent 70%);
+  opacity: 0.6;
+  mix-blend-mode: multiply;
   pointer-events: none;
-}
-.lw-hero__shapes {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 1;
-}
-/* Shapes — elongated pills with glassmorphism (same as homepage) */
-.lw-hero .hero__shape {
-  position: absolute;
-  border-radius: 9999px;
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 8px 32px rgba(255, 255, 255, 0.06);
-  opacity: 0;
-  will-change: transform, opacity;
-}
-.lw-hero .hero__shape::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.12), transparent 70%);
-}
-.lw-hero .hero__shape--1 {
-  width: 500px;
-  height: 120px;
-  left: -8%;
-  top: 22%;
-  background: linear-gradient(90deg, rgba(26, 126, 251, 0.15), transparent);
-}
-.lw-hero .hero__shape--2 {
-  width: 400px;
-  height: 100px;
-  right: -3%;
-  top: 70%;
-  background: linear-gradient(90deg, rgba(195, 247, 58, 0.12), transparent);
-}
-.lw-hero .hero__shape--3 {
-  width: 250px;
-  height: 70px;
-  left: 12%;
-  bottom: 12%;
-  background: linear-gradient(90deg, rgba(99, 102, 241, 0.12), transparent);
-}
-.lw-hero .hero__shape--4 {
-  width: 180px;
-  height: 50px;
-  right: 22%;
-  top: 10%;
-  background: linear-gradient(90deg, rgba(6, 182, 212, 0.12), transparent);
-}
-.lw-hero .hero__shape--5 {
-  width: 130px;
-  height: 35px;
-  left: 30%;
-  top: 6%;
-  background: linear-gradient(90deg, rgba(26, 126, 251, 0.1), transparent);
-}
-.lw-hero__fade {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 200px;
-  background: linear-gradient(to top, var(--bg) 0%, transparent 100%);
-  pointer-events: none;
-  z-index: 2;
-}
-.lw-hero .hero__container {
-  z-index: 3;
-}
-.lw-hero .hero__scroll {
-  z-index: 3;
 }
 
-/* Hero overrides for dark bg */
-.lw-hero .hero__eyebrow {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.1);
+/* Content above glow */
+.lw-hero .hero__container {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.lw-hero .hero__line {
-  background: var(--accent);
-}
-.lw-hero .hero__eyebrow span:last-child {
-  color: rgba(255, 255, 255, 0.6);
+
+/* Title — big, centered, dark */
+.lw-hero .hero__title {
+  margin-bottom: 32px;
 }
 .lw-hero .hero__word {
-  color: var(--white);
+  color: var(--black);
+  font-family: var(--display);
+  font-size: clamp(44px, 7.5vw, 96px);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
 }
 .lw-hero .hero__title em {
   color: var(--accent);
+  font-style: normal;
 }
+
+/* Subtitle — centered, muted */
 .lw-hero .hero__desc {
-  color: rgba(255, 255, 255, 0.5);
+  max-width: 540px;
+  font-size: clamp(16px, 1.2vw, 18px);
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--gray-500);
+  text-align: center;
 }
-.lw-hero .hero__cta {
-  background: var(--white);
-  border-color: var(--white);
-  color: var(--black);
-}
-.lw-hero .hero__cta:hover {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: var(--white);
-}
-.lw-hero .hero__scroll span {
-  color: rgba(255, 255, 255, 0.3);
-}
-.lw-hero .hero__scroll-line {
-  background: rgba(255, 255, 255, 0.1);
-}
-.lw-hero .hero__scroll-line::after {
-  background: var(--accent);
+
+/* Scroll indicator */
+.lw-hero .hero__scroll {
+  z-index: 1;
 }
 
 /* ============================
