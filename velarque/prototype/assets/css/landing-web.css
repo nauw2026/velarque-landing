@@ -1,12 +1,10 @@
 /* ============================================
    VELARQUE — Landing Web (Desarrollo Web)
-   New design system: Space Grotesk + Inter
-   Light/warm aesthetic, flat, modern
-   Requires: global.css, animations.js
+   Space Grotesk + Inter · Light/warm · GSAP-driven
    ============================================ */
 
 /* ============================
-   HERO — Light with warm yellow glow
+   HERO — Flowing SVG paths + warm glow
    ============================ */
 .lw-hero {
   position: relative;
@@ -19,18 +17,31 @@
   background: var(--white);
 }
 
-/* Warm yellow glow — central radial */
-.lw-hero__glow {
+/* SVG paths container */
+.lw-hero__paths {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background-image: radial-gradient(circle at center, #FFF991 0%, transparent 70%);
-  opacity: 0.6;
-  mix-blend-mode: multiply;
   pointer-events: none;
 }
+.lw-hero__paths svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
 
-/* Content above glow */
+/* Subtle warm glow over paths */
+.lw-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 249, 145, 0.22) 0%, transparent 55%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Content above paths */
 .lw-hero .hero__container {
   position: relative;
   z-index: 1;
@@ -40,9 +51,10 @@
   align-items: center;
 }
 
-/* Title — big, centered, dark */
+/* Title */
 .lw-hero .hero__title {
   margin-bottom: 32px;
+  perspective: 800px;
 }
 .lw-hero .hero__word {
   color: var(--black);
@@ -56,8 +68,12 @@
   color: var(--accent);
   font-style: normal;
 }
+.lw-char {
+  display: inline-block;
+  will-change: transform, opacity;
+}
 
-/* Subtitle — centered, muted */
+/* Subtitle */
 .lw-hero .hero__desc {
   max-width: 540px;
   font-size: clamp(16px, 1.2vw, 18px);
@@ -73,7 +89,7 @@
 }
 
 /* ============================
-   MARQUEE
+   MARQUEE — velocity-linked with skew
    ============================ */
 .lw-marquee {
   padding: 28px 0;
@@ -102,10 +118,6 @@
   color: var(--gray-300);
   font-weight: 300;
   flex-shrink: 0;
-}
-@keyframes lwMarquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
 }
 
 /* ============================
@@ -137,8 +149,32 @@
   max-width: 600px;
 }
 
+/* Word-by-word scrub helper */
+.lw-word {
+  display: inline-block;
+  will-change: opacity;
+}
+
+/* Highlight sweep */
+.lw-highlight {
+  position: relative;
+  display: inline;
+  background-image: linear-gradient(120deg, #FFF991 0%, #ffe566 100%);
+  background-repeat: no-repeat;
+  background-size: 0% 100%;
+  background-position: 0 0;
+  padding: 2px 6px;
+  margin: 0 -6px;
+  border-radius: 4px;
+  transition: background-size 0s;
+}
+.lw-highlight.is-active {
+  background-size: 100% 100%;
+  transition: background-size 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
 /* ============================
-   SOLUTIONS
+   SOLUTIONS — 3D tilt cards
    ============================ */
 .lw-solutions {
   padding: 0 0 clamp(100px, 12vh, 160px);
@@ -160,10 +196,11 @@
   overflow: hidden;
   background: var(--white);
   border: 1px solid var(--gray-200);
-  transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: box-shadow 0.5s var(--ease);
 }
 .lw-solution-card:hover {
-  transform: translateY(-6px);
   box-shadow: var(--shadow-lg);
 }
 .lw-solution-card__img {
@@ -182,6 +219,7 @@
 }
 .lw-solution-card__content {
   padding: 28px;
+  transform: translateZ(20px);
 }
 .lw-solution-card__num {
   font-family: var(--display);
@@ -209,7 +247,7 @@
 }
 
 /* ============================
-   STATS
+   STATS — dramatic
    ============================ */
 .lw-stats {
   padding: clamp(80px, 10vh, 120px) 0;
@@ -232,6 +270,7 @@
   letter-spacing: -2px;
   line-height: 1;
   margin-bottom: 12px;
+  will-change: transform, opacity, filter;
 }
 .lw-stat__label {
   font-size: 13px;
@@ -239,40 +278,6 @@
   letter-spacing: 0.5px;
   color: var(--gray-500);
   line-height: 1.5;
-}
-
-/* ============================
-   HIGHLIGHT EFFECT — yellow sweep
-   ============================ */
-.lw-highlight {
-  position: relative;
-  display: inline;
-  background-image: linear-gradient(120deg, #FFF991 0%, #ffe566 100%);
-  background-repeat: no-repeat;
-  background-size: 0% 100%;
-  background-position: 0 0;
-  padding: 2px 6px;
-  margin: 0 -6px;
-  border-radius: 4px;
-  transition: background-size 0s;
-}
-.lw-highlight.is-active {
-  background-size: 100% 100%;
-  transition: background-size 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-/* ============================
-   3D TILT PERSPECTIVE — solution cards
-   ============================ */
-.lw-solution-card[data-lw="tilt"] {
-  transform-style: preserve-3d;
-  will-change: transform;
-}
-.lw-solution-card[data-lw="tilt"]:hover {
-  transform: none;
-}
-.lw-solution-card__content {
-  transform: translateZ(20px);
 }
 
 /* ============================
@@ -287,6 +292,22 @@
 .lw-process__hscroll {
   position: relative;
   overflow: hidden;
+}
+.lw-process__progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gray-200);
+  z-index: 10;
+}
+.lw-process__progress-fill {
+  height: 100%;
+  background: var(--accent);
+  transform-origin: left center;
+  transform: scaleX(0);
+  will-change: transform;
 }
 .lw-process__track {
   display: flex;
@@ -369,14 +390,12 @@
 .lw-work__header {
   margin-bottom: 56px;
 }
-/* Splide overrides */
 .lw-work .splide {
   padding: 0 clamp(24px, 4vw, 80px);
 }
 .lw-work .splide__track {
   overflow: visible;
 }
-/* Case cards */
 .lw-case {
   border-radius: var(--radius);
   overflow: hidden;
@@ -445,6 +464,14 @@
   letter-spacing: 0.5px;
   text-transform: uppercase;
   color: var(--gray-400);
+}
+
+/* ============================
+   TESTIMONIAL — word reveal
+   ============================ */
+.lw-tword {
+  display: inline-block;
+  will-change: opacity;
 }
 
 /* ============================
@@ -560,13 +587,6 @@
 @keyframes lwPulse {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.4; }
-}
-
-/* ============================
-   STATS — dramatic pin styling
-   ============================ */
-.lw-stats.is-counting .lw-stat__number {
-  transition: color 0.4s ease;
 }
 
 /* ============================
