@@ -1,7 +1,7 @@
 /* ============================================
    VELARQUE — Landing Web Advanced Animations
-   Hero Paths + Typewriter + Timeline + Scroll System
-   Requires: gsap, ScrollTrigger
+   Aurora (CSS) + Typewriter + Split Timeline + Splide
+   Requires: gsap, ScrollTrigger, Splide
    ============================================ */
 
 (function () {
@@ -10,79 +10,7 @@
   if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
 
   // ═══════════════════════════════════════════
-  // 1. HERO — SVG Flowing Paths (BackgroundPaths)
-  // ═══════════════════════════════════════════
-  function generateHeroPaths() {
-    var container = document.getElementById('heroPaths');
-    if (!container) return;
-
-    function createPathSet(position) {
-      var svgNS = 'http://www.w3.org/2000/svg';
-      var svg = document.createElementNS(svgNS, 'svg');
-      svg.setAttribute('viewBox', '0 0 696 316');
-      svg.setAttribute('fill', 'none');
-      svg.setAttribute('preserveAspectRatio', 'xMidYMid slice');
-      svg.style.cssText = 'position:absolute;inset:0;width:100%;height:100%';
-
-      var paths = [];
-      for (var i = 0; i < 36; i++) {
-        var p = position;
-        var d = 'M-' + (380 - i * 5 * p) + ' -' + (189 + i * 6)
-              + 'C-' + (380 - i * 5 * p) + ' -' + (189 + i * 6)
-              + ' -' + (312 - i * 5 * p) + ' ' + (216 - i * 6)
-              + ' ' + (152 - i * 5 * p) + ' ' + (343 - i * 6)
-              + 'C' + (616 - i * 5 * p) + ' ' + (470 - i * 6)
-              + ' ' + (684 - i * 5 * p) + ' ' + (875 - i * 6)
-              + ' ' + (684 - i * 5 * p) + ' ' + (875 - i * 6);
-
-        var pathEl = document.createElementNS(svgNS, 'path');
-        pathEl.setAttribute('d', d);
-        pathEl.setAttribute('stroke', '#1a7efb');
-        pathEl.setAttribute('stroke-width', String(0.6 + i * 0.04));
-        pathEl.setAttribute('stroke-opacity', String(0.03 + i * 0.004));
-        svg.appendChild(pathEl);
-        paths.push(pathEl);
-      }
-
-      container.appendChild(svg);
-      return paths;
-    }
-
-    var leftPaths = createPathSet(1);
-    var rightPaths = createPathSet(-1);
-    var allPaths = leftPaths.concat(rightPaths);
-
-    // Animate each path — flowing stroke dash
-    allPaths.forEach(function (path) {
-      var len = path.getTotalLength();
-      var dashLen = len * 0.3;
-
-      path.style.strokeDasharray = dashLen + ' ' + (len - dashLen);
-      path.style.strokeDashoffset = '0';
-
-      // Flow animation — endless cycling
-      gsap.to(path, {
-        strokeDashoffset: -len,
-        duration: 20 + Math.random() * 10,
-        ease: 'none',
-        repeat: -1,
-      });
-
-      // Subtle opacity breathe
-      var baseOpacity = parseFloat(path.getAttribute('stroke-opacity'));
-      gsap.to(path, {
-        strokeOpacity: Math.min(baseOpacity * 2, 0.25),
-        duration: 8 + Math.random() * 6,
-        ease: 'sine.inOut',
-        repeat: -1,
-        yoyo: true,
-        delay: Math.random() * 4,
-      });
-    });
-  }
-
-  // ═══════════════════════════════════════════
-  // 2. HERO — Character split with spring physics
+  // 1. HERO — Character split with spring physics
   // ═══════════════════════════════════════════
   function initCharSplit() {
     var el = document.querySelector('[data-lw="char-split"]');
@@ -129,7 +57,7 @@
   }
 
   // ═══════════════════════════════════════════
-  // 3. HERO — Typewriter cycling phrases
+  // 2. HERO — Typewriter cycling phrases
   // ═══════════════════════════════════════════
   function initTypewriter() {
     var wrapper = document.querySelector('[data-lw="typewriter"]');
@@ -163,12 +91,10 @@
       var current = phrases[phraseIndex];
 
       if (!isDeleting) {
-        // Typing
         charIndex++;
         textEl.textContent = current.substring(0, charIndex);
 
         if (charIndex === current.length) {
-          // Finished typing — pause then delete
           setTimeout(function () {
             isDeleting = true;
             tick();
@@ -177,7 +103,6 @@
         }
         setTimeout(tick, typeSpeed + Math.random() * 40);
       } else {
-        // Deleting
         charIndex--;
         textEl.textContent = current.substring(0, charIndex);
 
@@ -191,12 +116,11 @@
       }
     }
 
-    // Start after hero loads
     setTimeout(tick, 2800);
   }
 
   // ═══════════════════════════════════════════
-  // 4. HERO — Description + scroll + path parallax
+  // 3. HERO — Description + scroll reveal
   // ═══════════════════════════════════════════
   function initHeroSecondary() {
     var desc = document.querySelector('.lw-hero .hero__desc');
@@ -212,11 +136,12 @@
       gsap.fromTo(scroll, { opacity: 0 }, { opacity: 1, duration: 1, delay: 2.4 });
     }
 
-    // Parallax the paths on scroll — creates depth
-    var paths = document.getElementById('heroPaths');
-    if (paths) {
-      gsap.to(paths, {
-        y: -120,
+    // Parallax the aurora on scroll
+    var aurora = document.querySelector('.lw-hero__aurora');
+    if (aurora) {
+      gsap.to(aurora, {
+        y: -80,
+        opacity: 0.2,
         ease: 'none',
         scrollTrigger: {
           trigger: '.lw-hero',
@@ -229,7 +154,7 @@
   }
 
   // ═══════════════════════════════════════════
-  // 5. VELOCITY MARQUEE — with dynamic skew
+  // 4. VELOCITY MARQUEE — with dynamic skew
   // ═══════════════════════════════════════════
   function initVelocityMarquee() {
     var section = document.querySelector('[data-lw="velocity-marquee"]');
@@ -237,7 +162,6 @@
     var track = section.querySelector('.lw-marquee__track');
     if (!track) return;
 
-    // Duplicate for seamless loop
     track.innerHTML += track.innerHTML;
 
     var baseSpeed = -1.5;
@@ -274,7 +198,7 @@
   }
 
   // ═══════════════════════════════════════════
-  // 6. PAIN POINTS — word-by-word scrub + highlights
+  // 5. PAIN POINTS — word-by-word scrub + highlights
   // ═══════════════════════════════════════════
   function initPainReveal() {
     var title = document.querySelector('.lw-pain__title');
@@ -345,7 +269,7 @@
   }
 
   // ═══════════════════════════════════════════
-  // 7. MANIFESTO — Text split word reveal
+  // 6. MANIFESTO — Text split word reveal
   // ═══════════════════════════════════════════
   function initManifestoReveal() {
     var text = document.querySelector('.lw-manifesto__text');
@@ -411,7 +335,7 @@
   }
 
   // ═══════════════════════════════════════════
-  // 8. SOLUTION CARDS — cinematic entrance + 3D tilt
+  // 7. SOLUTION CARDS — cinematic entrance + 3D tilt
   // ═══════════════════════════════════════════
   function initSolutionCards() {
     var cards = document.querySelectorAll('.lw-solution-card');
@@ -478,7 +402,7 @@
   }
 
   // ═══════════════════════════════════════════
-  // 9. STATS — dramatic scale + blur entrance
+  // 8. STATS — dramatic scale + blur entrance
   // ═══════════════════════════════════════════
   function initStatsDramatic() {
     var section = document.querySelector('[data-lw="stats-pin"]');
@@ -531,7 +455,7 @@
   }
 
   // ═══════════════════════════════════════════
-  // 10. TIMELINE — Vertical scroll-driven progress
+  // 9. TIMELINE — Split sticky with preview swapping
   // ═══════════════════════════════════════════
   function initTimeline() {
     var timeline = document.querySelector('[data-lw="timeline"]');
@@ -540,6 +464,7 @@
     var lineFill = timeline.querySelector('.lw-timeline__line-fill');
     var items = timeline.querySelectorAll('.lw-timeline__item');
     var dots = timeline.querySelectorAll('.lw-timeline__dot');
+    var previewImgs = timeline.querySelectorAll('.lw-timeline__preview-img');
 
     if (!lineFill || !items.length) return;
 
@@ -548,25 +473,42 @@
       height: '100%',
       ease: 'none',
       scrollTrigger: {
-        trigger: timeline,
+        trigger: timeline.querySelector('.lw-timeline__left'),
         start: 'top 60%',
         end: 'bottom 50%',
         scrub: 1,
       },
     });
 
-    // Activate dots as they enter viewport
-    dots.forEach(function (dot, i) {
+    // Activate dots + swap preview images as steps enter viewport
+    items.forEach(function (item, i) {
       ScrollTrigger.create({
-        trigger: items[i],
+        trigger: item,
         start: 'top 65%',
-        onEnter: function () { dot.classList.add('is-active'); },
-        onLeaveBack: function () { dot.classList.remove('is-active'); },
+        onEnter: function () {
+          dots[i].classList.add('is-active');
+          swapPreview(i);
+        },
+        onLeaveBack: function () {
+          dots[i].classList.remove('is-active');
+          swapPreview(Math.max(0, i - 1));
+        },
       });
     });
 
+    function swapPreview(index) {
+      if (!previewImgs.length) return;
+      previewImgs.forEach(function (img, j) {
+        if (j === index) {
+          img.classList.add('is-active');
+        } else {
+          img.classList.remove('is-active');
+        }
+      });
+    }
+
     // Timeline items: staggered entrance from left
-    items.forEach(function (item, i) {
+    items.forEach(function (item) {
       var content = item.querySelector('.lw-timeline__content');
       if (!content) return;
 
@@ -578,34 +520,30 @@
           scrollTrigger: { trigger: item, start: 'top 75%' },
         }
       );
-
-      // Media image parallax
-      var media = item.querySelector('.lw-timeline__media img');
-      if (media) {
-        gsap.set(media, { scale: 1.1 });
-        gsap.to(media, {
-          y: -30,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: item,
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: 1,
-          },
-        });
-      }
     });
+
+    // Preview image entrance
+    var previewBox = timeline.querySelector('.lw-timeline__preview');
+    if (previewBox) {
+      gsap.fromTo(previewBox,
+        { opacity: 0, scale: 0.92, y: 30 },
+        {
+          opacity: 1, scale: 1, y: 0,
+          duration: 1.2, ease: 'power3.out',
+          scrollTrigger: { trigger: timeline, start: 'top 70%' },
+        }
+      );
+    }
   }
 
   // ═══════════════════════════════════════════
-  // 11. CASES — Horizontal scroll pinned
+  // 10. CASES — Horizontal scroll pinned
   // ═══════════════════════════════════════════
   function initCasesHorizontal() {
     var section = document.querySelector('[data-lw="cases-horizontal"]');
     var track = document.querySelector('[data-lw="cases-track"]');
     if (!section || !track) return;
 
-    // Wait for layout to settle
     requestAnimationFrame(function () {
       requestAnimationFrame(function () {
         var cards = track.children;
@@ -677,80 +615,85 @@
   }
 
   // ═══════════════════════════════════════════
-  // 12. TESTIMONIAL — marks + word reveal + author
+  // 11. TESTIMONIALS — Splide slider init + reveal
   // ═══════════════════════════════════════════
-  function initTestimonialReveal() {
-    var testimonial = document.querySelector('[data-lw="testimonial"]');
-    if (!testimonial) return;
+  function initTestimonials() {
+    var slider = document.getElementById('lwTestimonialsSlider');
+    if (!slider || typeof Splide === 'undefined') return;
 
-    var marks = testimonial.querySelector('.testimonial__marks');
-    if (marks) {
-      gsap.fromTo(marks,
-        { scale: 4, opacity: 0, rotation: -25 },
+    new Splide('#lwTestimonialsSlider', {
+      type: 'fade',
+      rewind: true,
+      perPage: 1,
+      pagination: true,
+      arrows: false,
+      autoplay: true,
+      interval: 5000,
+      speed: 800,
+      easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
+    }).mount();
+
+    // Section reveal
+    var section = document.querySelector('.lw-testimonials');
+    if (section) {
+      var header = section.querySelector('.lw-testimonials__header');
+      if (header) {
+        gsap.fromTo(header,
+          { opacity: 0, y: 40 },
+          {
+            opacity: 1, y: 0, duration: 1, ease: 'power3.out',
+            scrollTrigger: { trigger: section, start: 'top 80%' },
+          }
+        );
+      }
+
+      gsap.fromTo(slider,
+        { opacity: 0, y: 50, scale: 0.96 },
         {
-          scale: 1, opacity: 1, rotation: 0,
-          duration: 1.4, ease: 'power4.out',
-          scrollTrigger: { trigger: testimonial, start: 'top 80%' },
-        }
-      );
-    }
-
-    var text = testimonial.querySelector('.testimonial__text');
-    if (text) {
-      var content = text.textContent.trim();
-      var textWords = content.split(/\s+/);
-      text.innerHTML = textWords.map(function (w) {
-        return '<span class="lw-tword">' + w + '&nbsp;</span>';
-      }).join('');
-
-      var tWords = text.querySelectorAll('.lw-tword');
-      gsap.set(tWords, { opacity: 0.1 });
-      gsap.to(tWords, {
-        opacity: 1,
-        stagger: 0.04,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: text,
-          start: 'top 78%',
-          end: 'bottom 55%',
-          scrub: 1,
-        },
-      });
-    }
-
-    var author = testimonial.querySelector('.testimonial__author');
-    if (author) {
-      gsap.fromTo(author,
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1, y: 0, duration: 0.8, ease: 'power3.out',
-          scrollTrigger: { trigger: author, start: 'top 90%' },
+          opacity: 1, y: 0, scale: 1,
+          duration: 1.2, ease: 'power3.out',
+          scrollTrigger: { trigger: slider, start: 'top 85%' },
         }
       );
     }
   }
 
   // ═══════════════════════════════════════════
-  // 13. INCLUDES — stagger with rotation
+  // 12. PRICING — card reveal
   // ═══════════════════════════════════════════
-  function initIncludesReveal() {
-    var section = document.querySelector('.lw-includes');
+  function initPricingReveal() {
+    var section = document.querySelector('.lw-pricing');
     if (!section) return;
 
-    var left = section.querySelector('.lw-includes__left');
-    if (left) {
-      gsap.fromTo(Array.from(left.children),
-        { opacity: 0, y: 40 },
+    // Header reveal
+    var header = section.querySelector('.lw-pricing__header');
+    if (header) {
+      gsap.fromTo(Array.from(header.children),
+        { opacity: 0, y: 30 },
         {
           opacity: 1, y: 0, duration: 0.8, stagger: 0.15, ease: 'power3.out',
-          scrollTrigger: { trigger: section, start: 'top 70%' },
+          scrollTrigger: { trigger: section, start: 'top 75%' },
         }
       );
     }
 
-    var price = section.querySelector('.lw-includes__price-amount');
-    if (price) {
-      gsap.fromTo(price,
+    // Card entrance
+    var card = section.querySelector('.lw-pricing__card');
+    if (card) {
+      gsap.fromTo(card,
+        { opacity: 0, y: 60, scale: 0.94 },
+        {
+          opacity: 1, y: 0, scale: 1,
+          duration: 1.2, ease: 'power3.out',
+          scrollTrigger: { trigger: card, start: 'top 85%' },
+        }
+      );
+    }
+
+    // Price amount pop
+    var amount = section.querySelector('.lw-pricing__amount');
+    if (amount) {
+      gsap.fromTo(amount,
         { scale: 0.5, opacity: 0 },
         {
           scale: 1, opacity: 1, duration: 1, ease: 'back.out(1.5)',
@@ -759,21 +702,22 @@
       );
     }
 
-    var items = section.querySelectorAll('.lw-includes__item');
-    if (items.length) {
-      gsap.fromTo(items,
-        { opacity: 0, x: 60, rotation: 2 },
+    // Features stagger
+    var features = section.querySelectorAll('.lw-pricing__feature');
+    if (features.length) {
+      gsap.fromTo(features,
+        { opacity: 0, x: 30 },
         {
-          opacity: 1, x: 0, rotation: 0,
-          duration: 0.6, stagger: 0.06, ease: 'power3.out',
-          scrollTrigger: { trigger: items[0], start: 'top 85%' },
+          opacity: 1, x: 0,
+          duration: 0.5, stagger: 0.06, ease: 'power3.out',
+          scrollTrigger: { trigger: features[0], start: 'top 88%' },
         }
       );
     }
   }
 
   // ═══════════════════════════════════════════
-  // 14. FAQ — smooth GSAP height animation
+  // 13. FAQ — smooth GSAP height animation
   // ═══════════════════════════════════════════
   function initFaqSmooth() {
     var items = document.querySelectorAll('.faq-item');
@@ -827,7 +771,7 @@
   }
 
   // ═══════════════════════════════════════════
-  // 15. CONTACT — cascade reveal
+  // 14. CONTACT — cascade reveal
   // ═══════════════════════════════════════════
   function initContactCascade() {
     var left = document.querySelector('.lw-contact__left');
@@ -856,7 +800,7 @@
   }
 
   // ═══════════════════════════════════════════
-  // 16. FOOTER — cascade links
+  // 15. FOOTER — cascade links
   // ═══════════════════════════════════════════
   function initFooterReveal() {
     var footer = document.querySelector('.footer');
@@ -898,7 +842,6 @@
   // MASTER INIT
   // ═══════════════════════════════════════════
   function initAll() {
-    generateHeroPaths();
     initCharSplit();
     initTypewriter();
     initHeroSecondary();
@@ -909,8 +852,8 @@
     initStatsDramatic();
     initTimeline();
     initCasesHorizontal();
-    initTestimonialReveal();
-    initIncludesReveal();
+    initTestimonials();
+    initPricingReveal();
     initFaqSmooth();
     initContactCascade();
     initFooterReveal();
