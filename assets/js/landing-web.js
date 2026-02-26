@@ -120,17 +120,9 @@
   }
 
   // ═══════════════════════════════════════════
-  // 3. HERO — Description + scroll reveal
+  // 3. HERO — Scroll indicator + aurora parallax
   // ═══════════════════════════════════════════
   function initHeroSecondary() {
-    var desc = document.querySelector('.lw-hero .hero__desc');
-    if (desc) {
-      gsap.fromTo(desc,
-        { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 1, ease: 'power3.out', delay: 1.8 }
-      );
-    }
-
     var scroll = document.querySelector('.lw-hero .hero__scroll');
     if (scroll) {
       gsap.fromTo(scroll, { opacity: 0 }, { opacity: 1, duration: 1, delay: 2.4 });
@@ -141,7 +133,7 @@
     if (aurora) {
       gsap.to(aurora, {
         y: -80,
-        opacity: 0.2,
+        opacity: 0.1,
         ease: 'none',
         scrollTrigger: {
           trigger: '.lw-hero',
@@ -402,15 +394,27 @@
   }
 
   // ═══════════════════════════════════════════
-  // 8. STATS — dramatic scale + blur entrance
+  // 8. STATS — card entrance + count up + bar fills
   // ═══════════════════════════════════════════
   function initStatsDramatic() {
     var section = document.querySelector('[data-lw="stats-pin"]');
     if (!section) return;
 
+    var cards = section.querySelectorAll('.lw-stat-card');
     var numbers = section.querySelectorAll('[data-lw-count]');
     if (!numbers.length) return;
 
+    // Cards entrance
+    gsap.fromTo(cards,
+      { opacity: 0, y: 50, scale: 0.95 },
+      {
+        opacity: 1, y: 0, scale: 1,
+        duration: 0.8, stagger: 0.1, ease: 'power3.out',
+        scrollTrigger: { trigger: section, start: 'top 70%' },
+      }
+    );
+
+    // Count up numbers
     numbers.forEach(function (el, i) {
       var target = parseFloat(el.getAttribute('data-lw-count'));
       var prefix = el.getAttribute('data-prefix') || '';
@@ -418,40 +422,31 @@
       var decimals = (String(target).split('.')[1] || '').length;
       var obj = { val: 0 };
 
-      gsap.set(el, { scale: 2.5, opacity: 0, filter: 'blur(12px)' });
-
       ScrollTrigger.create({
         trigger: section,
         start: 'top 65%',
         once: true,
         onEnter: function () {
-          gsap.to(el, {
-            scale: 1, opacity: 1, filter: 'blur(0px)',
-            duration: 1, ease: 'power4.out',
-            delay: i * 0.15,
-          });
-
           gsap.to(obj, {
             val: target,
             duration: 2.5,
             ease: 'power4.out',
-            delay: i * 0.15 + 0.3,
+            delay: i * 0.12,
             onUpdate: function () {
               el.textContent = prefix + obj.val.toFixed(decimals) + suffix;
             },
           });
+
+          // Fill progress bars
+          var bars = section.querySelectorAll('.lw-stat-card__bar-fill');
+          bars.forEach(function (bar) {
+            setTimeout(function () {
+              bar.classList.add('is-filled');
+            }, 300);
+          });
         },
       });
     });
-
-    var labels = section.querySelectorAll('.lw-stat__label');
-    gsap.fromTo(labels,
-      { opacity: 0, y: 20 },
-      {
-        opacity: 1, y: 0, duration: 0.7, stagger: 0.12, ease: 'power3.out',
-        scrollTrigger: { trigger: section, start: 'top 65%' },
-      }
-    );
   }
 
   // ═══════════════════════════════════════════
@@ -659,33 +654,20 @@
   }
 
   // ═══════════════════════════════════════════
-  // 12. PRICING — card reveal
+  // 12. PRICING — two-column reveal
   // ═══════════════════════════════════════════
   function initPricingReveal() {
     var section = document.querySelector('.lw-pricing');
     if (!section) return;
 
-    // Header reveal
-    var header = section.querySelector('.lw-pricing__header');
-    if (header) {
-      gsap.fromTo(Array.from(header.children),
-        { opacity: 0, y: 30 },
+    // Left column cascade
+    var left = section.querySelector('.lw-pricing__left');
+    if (left) {
+      gsap.fromTo(Array.from(left.children),
+        { opacity: 0, x: -40 },
         {
-          opacity: 1, y: 0, duration: 0.8, stagger: 0.15, ease: 'power3.out',
+          opacity: 1, x: 0, duration: 0.8, stagger: 0.12, ease: 'power3.out',
           scrollTrigger: { trigger: section, start: 'top 75%' },
-        }
-      );
-    }
-
-    // Card entrance
-    var card = section.querySelector('.lw-pricing__card');
-    if (card) {
-      gsap.fromTo(card,
-        { opacity: 0, y: 60, scale: 0.94 },
-        {
-          opacity: 1, y: 0, scale: 1,
-          duration: 1.2, ease: 'power3.out',
-          scrollTrigger: { trigger: card, start: 'top 85%' },
         }
       );
     }
@@ -702,14 +684,14 @@
       );
     }
 
-    // Features stagger
+    // Right features stagger
     var features = section.querySelectorAll('.lw-pricing__feature');
     if (features.length) {
       gsap.fromTo(features,
-        { opacity: 0, x: 30 },
+        { opacity: 0, x: 40 },
         {
           opacity: 1, x: 0,
-          duration: 0.5, stagger: 0.06, ease: 'power3.out',
+          duration: 0.6, stagger: 0.08, ease: 'power3.out',
           scrollTrigger: { trigger: features[0], start: 'top 88%' },
         }
       );
@@ -720,10 +702,10 @@
   // 13. FAQ — smooth GSAP height animation
   // ═══════════════════════════════════════════
   function initFaqSmooth() {
-    var items = document.querySelectorAll('.faq-item');
+    var items = document.querySelectorAll('.lw-faq-item');
 
     items.forEach(function (item) {
-      var answer = item.querySelector('.faq-item__a');
+      var answer = item.querySelector('.lw-faq-item__a');
       var summary = item.querySelector('summary');
       if (!answer || !summary) return;
 
@@ -758,13 +740,26 @@
       });
     });
 
-    var faqList = document.querySelector('.faq__list');
+    // Stagger entrance
+    var faqList = document.querySelector('.lw-faq__list');
     if (faqList) {
       gsap.fromTo(items,
         { opacity: 0, y: 20 },
         {
           opacity: 1, y: 0, duration: 0.6, stagger: 0.08, ease: 'power3.out',
           scrollTrigger: { trigger: faqList, start: 'top 80%' },
+        }
+      );
+    }
+
+    // Left column reveal
+    var faqLeft = document.querySelector('.lw-faq__left');
+    if (faqLeft) {
+      gsap.fromTo(Array.from(faqLeft.children),
+        { opacity: 0, x: -30 },
+        {
+          opacity: 1, x: 0, duration: 0.8, stagger: 0.12, ease: 'power3.out',
+          scrollTrigger: { trigger: faqLeft, start: 'top 80%' },
         }
       );
     }

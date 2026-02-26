@@ -70,9 +70,6 @@
           <span class="hero__word">que <em>venden</em> por ti</span>
         </span>
       </h1>
-      <p class="hero__desc">
-        Diseño a medida · Código limpio · Entrega en semanas
-      </p>
       <div class="lw-typewriter" data-lw="typewriter">
         <span class="lw-typewriter__text"></span>
         <span class="lw-typewriter__cursor">|</span>
@@ -133,7 +130,7 @@
     </div>
   </section>
 
-  <!-- SOLUTIONS — Header + Manifesto + Cards -->
+  <!-- SOLUTIONS — Header + Cards + Manifesto -->
   <section class="lw-solutions" id="servicios">
     <div class="container">
       <div class="lw-solutions__header">
@@ -141,17 +138,7 @@
         <h2 class="section-title reveal-text">Lo hacemos <em>diferente</em></h2>
       </div>
     </div>
-    <!-- Manifesto phrase -->
-    <div class="lw-manifesto">
-      <div class="container">
-        <h2 class="lw-manifesto__text" data-lw="text-split">
-          Tu web debería trabajar por ti<br>
-          <em>cada hora</em> de cada día,<br>
-          sin que toques nada
-        </h2>
-      </div>
-    </div>
-    <!-- Cards -->
+    <!-- Cards first -->
     <div class="lw-solutions__cards">
       <div class="lw-solution-card" data-lw="tilt">
         <div class="lw-solution-card__img">
@@ -184,27 +171,53 @@
         </div>
       </div>
     </div>
+    <!-- Manifesto phrase after cards -->
+    <div class="lw-manifesto">
+      <div class="container">
+        <h2 class="lw-manifesto__text" data-lw="text-split">
+          Tu web debería trabajar por ti
+          <em>cada hora</em> de cada día,
+          sin que toques nada
+        </h2>
+      </div>
+    </div>
   </section>
 
   <!-- STATS -->
   <section class="lw-stats" data-lw="stats-pin">
     <div class="container">
       <div class="lw-stats__grid">
-        <div class="lw-stat">
-          <span class="lw-stat__number" data-lw-count="50" data-suffix="+">0</span>
-          <span class="lw-stat__label">Proyectos<br>entregados</span>
+        <div class="lw-stat-card">
+          <div class="lw-stat-card__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+          </div>
+          <span class="lw-stat-card__number" data-lw-count="50" data-suffix="+">0</span>
+          <span class="lw-stat-card__label">Proyectos entregados</span>
+          <div class="lw-stat-card__bar"><div class="lw-stat-card__bar-fill" style="--fill: 85%"></div></div>
         </div>
-        <div class="lw-stat">
-          <span class="lw-stat__number" data-lw-count="3">0</span>
-          <span class="lw-stat__label">Semanas de<br>entrega media</span>
+        <div class="lw-stat-card">
+          <div class="lw-stat-card__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <span class="lw-stat-card__number" data-lw-count="3">0</span>
+          <span class="lw-stat-card__label">Semanas de entrega media</span>
+          <div class="lw-stat-card__bar"><div class="lw-stat-card__bar-fill" style="--fill: 60%"></div></div>
         </div>
-        <div class="lw-stat">
-          <span class="lw-stat__number" data-lw-count="98" data-suffix="%">0</span>
-          <span class="lw-stat__label">Satisfacción<br>del cliente</span>
+        <div class="lw-stat-card">
+          <div class="lw-stat-card__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </div>
+          <span class="lw-stat-card__number" data-lw-count="98" data-suffix="%">0</span>
+          <span class="lw-stat-card__label">Satisfacción del cliente</span>
+          <div class="lw-stat-card__bar"><div class="lw-stat-card__bar-fill" style="--fill: 98%"></div></div>
         </div>
-        <div class="lw-stat">
-          <span class="lw-stat__number" data-lw-count="4.2" data-prefix="x">0</span>
-          <span class="lw-stat__label">Retorno medio<br>en paid media</span>
+        <div class="lw-stat-card">
+          <div class="lw-stat-card__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <span class="lw-stat-card__number" data-lw-count="4.2" data-prefix="x">0</span>
+          <span class="lw-stat-card__label">Retorno medio en paid media</span>
+          <div class="lw-stat-card__bar"><div class="lw-stat-card__bar-fill" style="--fill: 72%"></div></div>
         </div>
       </div>
     </div>
@@ -403,8 +416,9 @@
     </div>
   </section>
 
-  <!-- TESTIMONIALS — Multiple with slider -->
+  <!-- TESTIMONIALS — Premium slider -->
   <section class="lw-testimonials">
+    <div class="lw-testimonials__bg"></div>
     <div class="container">
       <div class="lw-testimonials__header">
         <p class="section-label reveal-text">Testimonios</p>
@@ -415,69 +429,78 @@
           <div class="splide__list">
             <div class="splide__slide">
               <div class="lw-testimonial-card">
-                <div class="lw-testimonial-card__stars">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                </div>
+                <div class="lw-testimonial-card__quote">&ldquo;</div>
                 <blockquote class="lw-testimonial-card__text">
                   Es la mejor inversión que hemos hecho en marketing. La web que nos hizo Velarque nos genera clientes cada semana sin tocar nada.
                 </blockquote>
-                <div class="lw-testimonial-card__author">
-                  <div class="lw-testimonial-card__avatar">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&h=120&fit=crop&q=80" alt="Carlos Martínez" loading="lazy">
+                <div class="lw-testimonial-card__footer">
+                  <div class="lw-testimonial-card__author">
+                    <div class="lw-testimonial-card__avatar">
+                      <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&h=120&fit=crop&q=80" alt="Carlos Martínez" loading="lazy">
+                    </div>
+                    <div>
+                      <span class="lw-testimonial-card__name">Carlos Martínez</span>
+                      <span class="lw-testimonial-card__role">CEO &mdash; TechStartup</span>
+                    </div>
                   </div>
-                  <div>
-                    <span class="lw-testimonial-card__name">Carlos Martínez</span>
-                    <span class="lw-testimonial-card__role">CEO &mdash; TechStartup</span>
+                  <div class="lw-testimonial-card__stars">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--accent)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--accent)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--accent)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--accent)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--accent)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                   </div>
                 </div>
               </div>
             </div>
             <div class="splide__slide">
               <div class="lw-testimonial-card">
-                <div class="lw-testimonial-card__stars">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                </div>
+                <div class="lw-testimonial-card__quote">&ldquo;</div>
                 <blockquote class="lw-testimonial-card__text">
                   Nos entregaron la web en 2 semanas y media. Profesionales, rápidos y sin sorpresas. La web carga volando y ya estamos en primera página de Google.
                 </blockquote>
-                <div class="lw-testimonial-card__author">
-                  <div class="lw-testimonial-card__avatar">
-                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=120&h=120&fit=crop&q=80" alt="Laura García" loading="lazy">
+                <div class="lw-testimonial-card__footer">
+                  <div class="lw-testimonial-card__author">
+                    <div class="lw-testimonial-card__avatar">
+                      <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=120&h=120&fit=crop&q=80" alt="Laura García" loading="lazy">
+                    </div>
+                    <div>
+                      <span class="lw-testimonial-card__name">Laura García</span>
+                      <span class="lw-testimonial-card__role">Fundadora &mdash; Estudio Creativo</span>
+                    </div>
                   </div>
-                  <div>
-                    <span class="lw-testimonial-card__name">Laura García</span>
-                    <span class="lw-testimonial-card__role">Fundadora &mdash; Estudio Creativo</span>
+                  <div class="lw-testimonial-card__stars">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--accent)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--accent)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--accent)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--accent)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--accent)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                   </div>
                 </div>
               </div>
             </div>
             <div class="splide__slide">
               <div class="lw-testimonial-card">
-                <div class="lw-testimonial-card__stars">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                </div>
+                <div class="lw-testimonial-card__quote">&ldquo;</div>
                 <blockquote class="lw-testimonial-card__text">
                   Llevábamos meses con una agencia que no nos daba resultados. Con Velarque, en 3 semanas teníamos una web que por fin refleja nuestra marca y convierte.
                 </blockquote>
-                <div class="lw-testimonial-card__author">
-                  <div class="lw-testimonial-card__avatar">
-                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=120&h=120&fit=crop&q=80" alt="Miguel Ángel Ruiz" loading="lazy">
+                <div class="lw-testimonial-card__footer">
+                  <div class="lw-testimonial-card__author">
+                    <div class="lw-testimonial-card__avatar">
+                      <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=120&h=120&fit=crop&q=80" alt="Miguel Ángel Ruiz" loading="lazy">
+                    </div>
+                    <div>
+                      <span class="lw-testimonial-card__name">Miguel Ángel Ruiz</span>
+                      <span class="lw-testimonial-card__role">Director &mdash; Consultoría RH</span>
+                    </div>
                   </div>
-                  <div>
-                    <span class="lw-testimonial-card__name">Miguel Ángel Ruiz</span>
-                    <span class="lw-testimonial-card__role">Director &mdash; Consultoría RH</span>
+                  <div class="lw-testimonial-card__stars">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--accent)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--accent)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--accent)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--accent)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--accent)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                   </div>
                 </div>
               </div>
@@ -488,138 +511,164 @@
     </div>
   </section>
 
-  <!-- PRICING -->
+  <!-- PRICING — Two columns -->
   <section class="lw-pricing" id="pricing">
     <div class="container">
-      <div class="lw-pricing__header">
-        <p class="section-label reveal-text">Inversión</p>
-        <h2 class="section-title reveal-text">Todo incluido, <em>sin sorpresas</em></h2>
-      </div>
-      <div class="lw-pricing__card">
-        <div class="lw-pricing__card-top">
-          <span class="lw-pricing__from">Proyectos web desde</span>
-          <div class="lw-pricing__amount-row">
+      <div class="lw-pricing__layout">
+        <div class="lw-pricing__left">
+          <p class="section-label reveal-text">Inversión</p>
+          <h2 class="lw-pricing__title">Todo incluido,<br><em>sin sorpresas</em></h2>
+          <p class="lw-pricing__desc">Presupuesto cerrado antes de empezar. Sin costes ocultos, sin extras inesperados.</p>
+          <div class="lw-pricing__price">
+            <span class="lw-pricing__from">Proyectos web desde</span>
             <span class="lw-pricing__amount">800&euro;</span>
-            <span class="lw-pricing__note">Presupuesto cerrado antes de empezar</span>
+          </div>
+          <a href="#contacto" class="btn-main" data-magnetic>
+            <span>Pedir presupuesto</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          </a>
+        </div>
+        <div class="lw-pricing__right">
+          <div class="lw-pricing__feature">
+            <div class="lw-pricing__feature-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg>
+            </div>
+            <div>
+              <span class="lw-pricing__feature-title">Diseño UI/UX personalizado</span>
+              <span class="lw-pricing__feature-desc">Interfaz única creada desde cero para tu marca</span>
+            </div>
+          </div>
+          <div class="lw-pricing__feature">
+            <div class="lw-pricing__feature-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg>
+            </div>
+            <div>
+              <span class="lw-pricing__feature-title">Programación a medida</span>
+              <span class="lw-pricing__feature-desc">Código limpio, sin page builders</span>
+            </div>
+          </div>
+          <div class="lw-pricing__feature">
+            <div class="lw-pricing__feature-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg>
+            </div>
+            <div>
+              <span class="lw-pricing__feature-title">100% responsive + SEO</span>
+              <span class="lw-pricing__feature-desc">Optimizado para móvil y buscadores</span>
+            </div>
+          </div>
+          <div class="lw-pricing__feature">
+            <div class="lw-pricing__feature-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg>
+            </div>
+            <div>
+              <span class="lw-pricing__feature-title">Analytics + Search Console</span>
+              <span class="lw-pricing__feature-desc">Métricas configuradas desde el día uno</span>
+            </div>
+          </div>
+          <div class="lw-pricing__feature">
+            <div class="lw-pricing__feature-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg>
+            </div>
+            <div>
+              <span class="lw-pricing__feature-title">SSL + Formularios + Seguridad</span>
+              <span class="lw-pricing__feature-desc">Certificado, protección y captación listos</span>
+            </div>
+          </div>
+          <div class="lw-pricing__feature">
+            <div class="lw-pricing__feature-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg>
+            </div>
+            <div>
+              <span class="lw-pricing__feature-title">Formación + 30 días de soporte</span>
+              <span class="lw-pricing__feature-desc">Te enseñamos a gestionar tu web</span>
+            </div>
           </div>
         </div>
-        <div class="lw-pricing__features">
-          <div class="lw-pricing__feature">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg>
-            <span>Diseño UI/UX personalizado</span>
-          </div>
-          <div class="lw-pricing__feature">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg>
-            <span>Programación a medida</span>
-          </div>
-          <div class="lw-pricing__feature">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg>
-            <span>100% responsive</span>
-          </div>
-          <div class="lw-pricing__feature">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg>
-            <span>Optimización SEO técnico</span>
-          </div>
-          <div class="lw-pricing__feature">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg>
-            <span>Google Analytics + Search Console</span>
-          </div>
-          <div class="lw-pricing__feature">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg>
-            <span>Formularios funcionales</span>
-          </div>
-          <div class="lw-pricing__feature">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg>
-            <span>SSL y seguridad</span>
-          </div>
-          <div class="lw-pricing__feature">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg>
-            <span>Formación para tu equipo</span>
-          </div>
-          <div class="lw-pricing__feature">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg>
-            <span>30 días de soporte incluidos</span>
-          </div>
-        </div>
-        <a href="#contacto" class="btn-main" data-magnetic>
-          <span>Pedir presupuesto</span>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-        </a>
       </div>
     </div>
   </section>
 
-  <!-- FAQ -->
-  <section class="faq" id="faq">
+  <!-- FAQ — Premium numbered -->
+  <section class="lw-faq" id="faq">
     <div class="container">
-      <div class="faq__header">
-        <p class="section-label reveal-text">FAQ</p>
-        <h2 class="section-title reveal-text">Preguntas frecuentes</h2>
-      </div>
-      <div class="faq__list">
-        <details class="faq-item" open>
-          <summary class="faq-item__q">
-            &#191;Cuánto cuesta una web con Velarque?
-            <span class="faq-item__icon"></span>
-          </summary>
-          <div class="faq-item__a">
-            <p>Nuestros proyectos web parten desde 800&euro; para una landing page. Una web corporativa de 5 páginas ronda los 1.500-3.000&euro;. Te damos presupuesto cerrado antes de empezar: sin sorpresas, sin costes ocultos.</p>
-          </div>
-        </details>
-        <details class="faq-item">
-          <summary class="faq-item__q">
-            &#191;Cuánto tardáis en entregar?
-            <span class="faq-item__icon"></span>
-          </summary>
-          <div class="faq-item__a">
-            <p>Entre 2 y 4 semanas para la mayoría de proyectos. Una landing puede estar lista en 7-10 días. Webs más complejas, 4-6 semanas. Te damos fecha exacta en el presupuesto y la cumplimos.</p>
-          </div>
-        </details>
-        <details class="faq-item">
-          <summary class="faq-item__q">
-            &#191;Trabajáis con WordPress?
-            <span class="faq-item__icon"></span>
-          </summary>
-          <div class="faq-item__a">
-            <p>Sí, creamos temas de WordPress 100% personalizados, sin page builders como Elementor o Divi. También trabajamos con Shopify para e-commerce y otras tecnologías si el proyecto lo requiere.</p>
-          </div>
-        </details>
-        <details class="faq-item">
-          <summary class="faq-item__q">
-            &#191;Qué pasa después de la entrega?
-            <span class="faq-item__icon"></span>
-          </summary>
-          <div class="faq-item__a">
-            <p>Incluimos 30 días de soporte gratuito y te formamos para que gestiones tu contenido. Después, ofrecemos planes de mantenimiento opcionales desde 80&euro;/mes.</p>
-          </div>
-        </details>
-        <details class="faq-item">
-          <summary class="faq-item__q">
-            &#191;Necesito preparar algo antes de empezar?
-            <span class="faq-item__icon"></span>
-          </summary>
-          <div class="faq-item__a">
-            <p>Solo necesitas tener claro qué quieres conseguir con tu web. Nosotros nos encargamos de todo lo demás: textos, estructura, dominio, hosting. Si ya tienes logo y fotos, mejor, pero no es imprescindible.</p>
-          </div>
-        </details>
-        <details class="faq-item">
-          <summary class="faq-item__q">
-            &#191;Podéis rediseñar mi web actual?
-            <span class="faq-item__icon"></span>
-          </summary>
-          <div class="faq-item__a">
-            <p>Por supuesto. Analizamos tu web actual, identificamos qué funciona y qué no, y la rediseñamos desde cero manteniendo tu posicionamiento SEO y mejorando la conversión.</p>
-          </div>
-        </details>
-        <details class="faq-item">
-          <summary class="faq-item__q">
-            &#191;También hacéis SEO y marketing?
-            <span class="faq-item__icon"></span>
-          </summary>
-          <div class="faq-item__a">
-            <p>Sí. Somos una agencia 360. Web, posicionamiento, paid media, automatización, CRM &mdash; lo cubrimos todo bajo el mismo equipo para que no tengas que coordinar entre varias agencias.</p>
-          </div>
-        </details>
+      <div class="lw-faq__layout">
+        <div class="lw-faq__left">
+          <p class="section-label reveal-text">FAQ</p>
+          <h2 class="lw-faq__title">Preguntas<br><em>frecuentes</em></h2>
+          <p class="lw-faq__desc">Todo lo que necesitas saber antes de empezar tu proyecto con nosotros.</p>
+        </div>
+        <div class="lw-faq__list">
+          <details class="lw-faq-item" open>
+            <summary class="lw-faq-item__q">
+              <span class="lw-faq-item__num">01</span>
+              <span class="lw-faq-item__text">&#191;Cuánto cuesta una web con Velarque?</span>
+              <span class="lw-faq-item__icon"></span>
+            </summary>
+            <div class="lw-faq-item__a">
+              <p>Nuestros proyectos web parten desde 800&euro; para una landing page. Una web corporativa de 5 páginas ronda los 1.500-3.000&euro;. Te damos presupuesto cerrado antes de empezar: sin sorpresas, sin costes ocultos.</p>
+            </div>
+          </details>
+          <details class="lw-faq-item">
+            <summary class="lw-faq-item__q">
+              <span class="lw-faq-item__num">02</span>
+              <span class="lw-faq-item__text">&#191;Cuánto tardáis en entregar?</span>
+              <span class="lw-faq-item__icon"></span>
+            </summary>
+            <div class="lw-faq-item__a">
+              <p>Entre 2 y 4 semanas para la mayoría de proyectos. Una landing puede estar lista en 7-10 días. Webs más complejas, 4-6 semanas. Te damos fecha exacta en el presupuesto y la cumplimos.</p>
+            </div>
+          </details>
+          <details class="lw-faq-item">
+            <summary class="lw-faq-item__q">
+              <span class="lw-faq-item__num">03</span>
+              <span class="lw-faq-item__text">&#191;Trabajáis con WordPress?</span>
+              <span class="lw-faq-item__icon"></span>
+            </summary>
+            <div class="lw-faq-item__a">
+              <p>Sí, creamos temas de WordPress 100% personalizados, sin page builders como Elementor o Divi. También trabajamos con Shopify para e-commerce y otras tecnologías si el proyecto lo requiere.</p>
+            </div>
+          </details>
+          <details class="lw-faq-item">
+            <summary class="lw-faq-item__q">
+              <span class="lw-faq-item__num">04</span>
+              <span class="lw-faq-item__text">&#191;Qué pasa después de la entrega?</span>
+              <span class="lw-faq-item__icon"></span>
+            </summary>
+            <div class="lw-faq-item__a">
+              <p>Incluimos 30 días de soporte gratuito y te formamos para que gestiones tu contenido. Después, ofrecemos planes de mantenimiento opcionales desde 80&euro;/mes.</p>
+            </div>
+          </details>
+          <details class="lw-faq-item">
+            <summary class="lw-faq-item__q">
+              <span class="lw-faq-item__num">05</span>
+              <span class="lw-faq-item__text">&#191;Necesito preparar algo antes de empezar?</span>
+              <span class="lw-faq-item__icon"></span>
+            </summary>
+            <div class="lw-faq-item__a">
+              <p>Solo necesitas tener claro qué quieres conseguir con tu web. Nosotros nos encargamos de todo lo demás: textos, estructura, dominio, hosting. Si ya tienes logo y fotos, mejor, pero no es imprescindible.</p>
+            </div>
+          </details>
+          <details class="lw-faq-item">
+            <summary class="lw-faq-item__q">
+              <span class="lw-faq-item__num">06</span>
+              <span class="lw-faq-item__text">&#191;Podéis rediseñar mi web actual?</span>
+              <span class="lw-faq-item__icon"></span>
+            </summary>
+            <div class="lw-faq-item__a">
+              <p>Por supuesto. Analizamos tu web actual, identificamos qué funciona y qué no, y la rediseñamos desde cero manteniendo tu posicionamiento SEO y mejorando la conversión.</p>
+            </div>
+          </details>
+          <details class="lw-faq-item">
+            <summary class="lw-faq-item__q">
+              <span class="lw-faq-item__num">07</span>
+              <span class="lw-faq-item__text">&#191;También hacéis SEO y marketing?</span>
+              <span class="lw-faq-item__icon"></span>
+            </summary>
+            <div class="lw-faq-item__a">
+              <p>Sí. Somos una agencia 360. Web, posicionamiento, paid media, automatización, CRM &mdash; lo cubrimos todo bajo el mismo equipo para que no tengas que coordinar entre varias agencias.</p>
+            </div>
+          </details>
+        </div>
       </div>
     </div>
   </section>
