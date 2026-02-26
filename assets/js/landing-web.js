@@ -610,23 +610,49 @@
   }
 
   // ═══════════════════════════════════════════
-  // 11. TESTIMONIALS — Splide slider init + reveal
+  // 11. TESTIMONIALS — Splide slider + custom arrows + counter
   // ═══════════════════════════════════════════
   function initTestimonials() {
     var slider = document.getElementById('lwTestimonialsSlider');
     if (!slider || typeof Splide === 'undefined') return;
 
-    new Splide('#lwTestimonialsSlider', {
+    var splideInstance = new Splide('#lwTestimonialsSlider', {
       type: 'fade',
       rewind: true,
       perPage: 1,
-      pagination: true,
+      pagination: false,
       arrows: false,
       autoplay: true,
       interval: 5000,
       speed: 800,
       easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
-    }).mount();
+    });
+
+    // Custom arrow controls
+    var prevBtn = document.getElementById('lwTestPrev');
+    var nextBtn = document.getElementById('lwTestNext');
+    var currentEl = document.getElementById('lwTestCurrent');
+    var totalEl = document.getElementById('lwTestTotal');
+
+    splideInstance.on('mounted', function () {
+      var total = splideInstance.length;
+      if (totalEl) totalEl.textContent = total < 10 ? '0' + total : total;
+      updateCounter(0);
+    });
+
+    splideInstance.on('move', function (newIndex) {
+      updateCounter(newIndex);
+    });
+
+    function updateCounter(index) {
+      var num = index + 1;
+      if (currentEl) currentEl.textContent = num < 10 ? '0' + num : num;
+    }
+
+    splideInstance.mount();
+
+    if (prevBtn) prevBtn.addEventListener('click', function () { splideInstance.go('<'); });
+    if (nextBtn) nextBtn.addEventListener('click', function () { splideInstance.go('>'); });
 
     // Section reveal
     var section = document.querySelector('.lw-testimonials');
@@ -642,14 +668,31 @@
         );
       }
 
-      gsap.fromTo(slider,
-        { opacity: 0, y: 50, scale: 0.96 },
-        {
-          opacity: 1, y: 0, scale: 1,
-          duration: 1.2, ease: 'power3.out',
-          scrollTrigger: { trigger: slider, start: 'top 85%' },
-        }
-      );
+      // Stage entrance
+      var stage = section.querySelector('.lw-testimonials__stage');
+      if (stage) {
+        gsap.fromTo(stage,
+          { opacity: 0, y: 50 },
+          {
+            opacity: 1, y: 0,
+            duration: 1.2, ease: 'power3.out',
+            scrollTrigger: { trigger: stage, start: 'top 85%' },
+          }
+        );
+      }
+
+      // Decorative marks entrance
+      var marks = section.querySelectorAll('.lw-testimonials__mark');
+      marks.forEach(function (mark, i) {
+        gsap.fromTo(mark,
+          { opacity: 0, scale: 0.5 },
+          {
+            opacity: 0.08, scale: 1,
+            duration: 1.5, ease: 'power3.out', delay: 0.3 + i * 0.2,
+            scrollTrigger: { trigger: section, start: 'top 80%' },
+          }
+        );
+      });
     }
   }
 
@@ -699,7 +742,7 @@
   }
 
   // ═══════════════════════════════════════════
-  // 13. FAQ — smooth GSAP height animation
+  // 13. FAQ — smooth GSAP height animation (centered cards)
   // ═══════════════════════════════════════════
   function initFaqSmooth() {
     var items = document.querySelectorAll('.lw-faq-item');
@@ -740,26 +783,26 @@
       });
     });
 
-    // Stagger entrance
-    var faqList = document.querySelector('.lw-faq__list');
-    if (faqList) {
-      gsap.fromTo(items,
-        { opacity: 0, y: 20 },
+    // Header reveal
+    var faqHeader = document.querySelector('.lw-faq__header');
+    if (faqHeader) {
+      gsap.fromTo(Array.from(faqHeader.children),
+        { opacity: 0, y: 30 },
         {
-          opacity: 1, y: 0, duration: 0.6, stagger: 0.08, ease: 'power3.out',
-          scrollTrigger: { trigger: faqList, start: 'top 80%' },
+          opacity: 1, y: 0, duration: 0.8, stagger: 0.12, ease: 'power3.out',
+          scrollTrigger: { trigger: faqHeader, start: 'top 80%' },
         }
       );
     }
 
-    // Left column reveal
-    var faqLeft = document.querySelector('.lw-faq__left');
-    if (faqLeft) {
-      gsap.fromTo(Array.from(faqLeft.children),
-        { opacity: 0, x: -30 },
+    // Cards stagger entrance
+    var faqList = document.querySelector('.lw-faq__list');
+    if (faqList) {
+      gsap.fromTo(items,
+        { opacity: 0, y: 30, scale: 0.97 },
         {
-          opacity: 1, x: 0, duration: 0.8, stagger: 0.12, ease: 'power3.out',
-          scrollTrigger: { trigger: faqLeft, start: 'top 80%' },
+          opacity: 1, y: 0, scale: 1, duration: 0.7, stagger: 0.08, ease: 'power3.out',
+          scrollTrigger: { trigger: faqList, start: 'top 80%' },
         }
       );
     }
@@ -795,42 +838,22 @@
   }
 
   // ═══════════════════════════════════════════
-  // 15. FOOTER — cascade links
+  // 15. FOOTER — bottom bar reveal (landing: top is hidden)
   // ═══════════════════════════════════════════
   function initFooterReveal() {
     var footer = document.querySelector('.footer');
     if (!footer) return;
 
-    var brand = footer.querySelector('.footer__brand');
-    if (brand) {
-      gsap.fromTo(brand,
-        { opacity: 0, y: 30 },
+    var bottom = footer.querySelector('.footer__bottom');
+    if (bottom) {
+      gsap.fromTo(bottom,
+        { opacity: 0, y: 20 },
         {
           opacity: 1, y: 0, duration: 0.8, ease: 'power3.out',
-          scrollTrigger: { trigger: footer, start: 'top 92%' },
+          scrollTrigger: { trigger: footer, start: 'top 95%' },
         }
       );
     }
-
-    var cols = footer.querySelectorAll('.footer__col');
-    gsap.fromTo(cols,
-      { opacity: 0, y: 20 },
-      {
-        opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: 'power3.out',
-        scrollTrigger: { trigger: footer, start: 'top 92%' },
-      }
-    );
-
-    cols.forEach(function (col) {
-      var links = col.querySelectorAll('a, span:not(.footer__col-title)');
-      gsap.fromTo(links,
-        { opacity: 0, x: -10 },
-        {
-          opacity: 1, x: 0, duration: 0.4, stagger: 0.05, ease: 'power3.out',
-          scrollTrigger: { trigger: col, start: 'top 95%' },
-        }
-      );
-    });
   }
 
   // ═══════════════════════════════════════════
