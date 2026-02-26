@@ -244,7 +244,7 @@
 }
 .lw-solution-card__img {
   position: relative;
-  aspect-ratio: 4/5;
+  aspect-ratio: 4/4;
   overflow: hidden;
 }
 .lw-solution-card__img img {
@@ -285,16 +285,16 @@
   color: var(--gray-500);
 }
 
-/* Manifesto — below cards, extra spacing */
+/* Manifesto — below cards, generous spacing */
 .lw-manifesto {
-  padding: clamp(100px, 12vh, 180px) 0 clamp(100px, 12vh, 160px);
+  padding: clamp(140px, 16vh, 240px) 0 clamp(100px, 12vh, 160px);
   position: relative;
   overflow: hidden;
 }
 .lw-manifesto::before {
   content: '';
   position: absolute;
-  top: clamp(40px, 5vh, 60px);
+  top: clamp(56px, 7vh, 90px);
   left: clamp(24px, 4vw, 80px);
   width: 60px;
   height: 3px;
@@ -1146,10 +1146,11 @@
 }
 
 @media (max-width: 768px) {
-  .lw-hero { padding: 140px 0 80px; min-height: auto; }
+  .lw-hero { padding: 120px 0 48px; min-height: calc(100svh - 72px); }
   .lw-hero .hero__word { font-size: clamp(32px, 10vw, 48px); letter-spacing: -0.02em; }
   .lw-hero__aurora { opacity: 0.7; }
   .lw-hero__aurora::after { filter: blur(40px); }
+  .lw-marquee { padding: 22px 0; }
 
   .lw-stats__grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
   .lw-stat-card { padding: 24px 20px 20px; }
