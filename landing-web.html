@@ -74,6 +74,10 @@
         Diseño a medida. Código limpio. Entrega en semanas, no en meses.<br>
         Cada proyecto es una pieza única, pensada para convertir.
       </p>
+      <div class="lw-typewriter" data-lw="typewriter">
+        <span class="lw-typewriter__text"></span>
+        <span class="lw-typewriter__cursor">|</span>
+      </div>
     </div>
     <div class="hero__scroll">
       <span>Scroll</span>
@@ -127,6 +131,17 @@
           </p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- MANIFESTO — Big phrase with decorative line -->
+  <section class="lw-manifesto">
+    <div class="container">
+      <h2 class="lw-manifesto__text" data-lw="text-split">
+        Tu web debería trabajar por ti<br>
+        <em>cada hora</em> de cada día,<br>
+        sin que toques nada
+      </h2>
     </div>
   </section>
 
@@ -196,185 +211,198 @@
     </div>
   </section>
 
-  <!-- PROCESS — horizontal scroll pinned -->
+  <!-- PROCESS — Vertical timeline with scroll-driven progress -->
   <section class="lw-process" id="proceso">
     <div class="container">
       <div class="lw-process__header">
         <p class="section-label reveal-text">( Proceso )</p>
         <h2 class="section-title reveal-text">De la idea a la web en <em>4 pasos</em></h2>
       </div>
-    </div>
-    <div class="lw-process__hscroll" data-lw="horizontal-scroll">
-      <div class="lw-process__track">
-        <div class="lw-hstep">
-          <div class="lw-hstep__num">01</div>
-          <div class="lw-hstep__img">
-            <img src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=560&h=400&fit=crop&q=80" alt="Reunión" loading="lazy">
+      <div class="lw-timeline" data-lw="timeline">
+        <!-- Progress line -->
+        <div class="lw-timeline__line">
+          <div class="lw-timeline__line-bg"></div>
+          <div class="lw-timeline__line-fill"></div>
+        </div>
+        <!-- Step 1 -->
+        <div class="lw-timeline__item">
+          <div class="lw-timeline__dot">
+            <div class="lw-timeline__dot-inner"></div>
           </div>
-          <div class="lw-hstep__content">
-            <span class="lw-hstep__time">1-2 días</span>
-            <h3 class="lw-hstep__title">Escuchamos</h3>
-            <p class="lw-hstep__text">Nos sentamos contigo para entender tu negocio, tu público y tus objetivos. Sin esta base, no escribimos ni una línea de código.</p>
+          <div class="lw-timeline__content">
+            <div class="lw-timeline__meta">
+              <span class="lw-timeline__num">01</span>
+              <span class="lw-timeline__time">1-2 días</span>
+            </div>
+            <h3 class="lw-timeline__title">Escuchamos</h3>
+            <p class="lw-timeline__text">Nos sentamos contigo para entender tu negocio, tu público y tus objetivos. Sin esta base, no escribimos ni una línea de código.</p>
+            <div class="lw-timeline__media">
+              <img src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=560&h=400&fit=crop&q=80" alt="Reunión" loading="lazy">
+            </div>
           </div>
         </div>
-        <div class="lw-hstep">
-          <div class="lw-hstep__num">02</div>
-          <div class="lw-hstep__img">
-            <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=560&h=400&fit=crop&q=80" alt="Diseño" loading="lazy">
+        <!-- Step 2 -->
+        <div class="lw-timeline__item">
+          <div class="lw-timeline__dot">
+            <div class="lw-timeline__dot-inner"></div>
           </div>
-          <div class="lw-hstep__content">
-            <span class="lw-hstep__time">3-5 días</span>
-            <h3 class="lw-hstep__title">Diseñamos</h3>
-            <p class="lw-hstep__text">Creamos wireframes y un diseño visual completo en Figma. No programamos hasta que el diseño te encanta.</p>
-          </div>
-        </div>
-        <div class="lw-hstep">
-          <div class="lw-hstep__num">03</div>
-          <div class="lw-hstep__img">
-            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=560&h=400&fit=crop&q=80" alt="Programación" loading="lazy">
-          </div>
-          <div class="lw-hstep__content">
-            <span class="lw-hstep__time">5-10 días</span>
-            <h3 class="lw-hstep__title">Programamos</h3>
-            <p class="lw-hstep__text">Código limpio, optimizado para SEO y rendimiento. Cada funcionalidad se prueba a fondo antes de avanzar.</p>
+          <div class="lw-timeline__content">
+            <div class="lw-timeline__meta">
+              <span class="lw-timeline__num">02</span>
+              <span class="lw-timeline__time">3-5 días</span>
+            </div>
+            <h3 class="lw-timeline__title">Diseñamos</h3>
+            <p class="lw-timeline__text">Creamos wireframes y un diseño visual completo en Figma. No programamos hasta que el diseño te encanta.</p>
+            <div class="lw-timeline__media">
+              <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=560&h=400&fit=crop&q=80" alt="Diseño" loading="lazy">
+            </div>
           </div>
         </div>
-        <div class="lw-hstep">
-          <div class="lw-hstep__num">04</div>
-          <div class="lw-hstep__img">
-            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=560&h=400&fit=crop&q=80" alt="Lanzamiento" loading="lazy">
+        <!-- Step 3 -->
+        <div class="lw-timeline__item">
+          <div class="lw-timeline__dot">
+            <div class="lw-timeline__dot-inner"></div>
           </div>
-          <div class="lw-hstep__content">
-            <span class="lw-hstep__time">1-2 días</span>
-            <h3 class="lw-hstep__title">Lanzamos</h3>
-            <p class="lw-hstep__text">Hosting, dominio, analítica. Te formamos para que gestiones tu contenido de forma autónoma.</p>
+          <div class="lw-timeline__content">
+            <div class="lw-timeline__meta">
+              <span class="lw-timeline__num">03</span>
+              <span class="lw-timeline__time">5-10 días</span>
+            </div>
+            <h3 class="lw-timeline__title">Programamos</h3>
+            <p class="lw-timeline__text">Código limpio, optimizado para SEO y rendimiento. Cada funcionalidad se prueba a fondo antes de avanzar.</p>
+            <div class="lw-timeline__media">
+              <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=560&h=400&fit=crop&q=80" alt="Programación" loading="lazy">
+            </div>
+          </div>
+        </div>
+        <!-- Step 4 -->
+        <div class="lw-timeline__item">
+          <div class="lw-timeline__dot">
+            <div class="lw-timeline__dot-inner"></div>
+          </div>
+          <div class="lw-timeline__content">
+            <div class="lw-timeline__meta">
+              <span class="lw-timeline__num">04</span>
+              <span class="lw-timeline__time">1-2 días</span>
+            </div>
+            <h3 class="lw-timeline__title">Lanzamos</h3>
+            <p class="lw-timeline__text">Hosting, dominio, analítica. Te formamos para que gestiones tu contenido de forma autónoma.</p>
+            <div class="lw-timeline__media">
+              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=560&h=400&fit=crop&q=80" alt="Lanzamiento" loading="lazy">
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- WORK / CASES — Splide Slider -->
-  <section class="lw-work" id="work">
-    <div class="container">
-      <div class="lw-work__header">
-        <p class="section-label reveal-text">( Trabajo seleccionado )</p>
-        <h2 class="section-title reveal-text">Resultados <em>reales</em></h2>
-      </div>
+  <!-- WORK / CASES — Horizontal scroll pinned -->
+  <section class="lw-cases" id="work" data-lw="cases-horizontal">
+    <div class="lw-cases__header container">
+      <p class="section-label reveal-text">( Trabajo seleccionado )</p>
+      <h2 class="section-title reveal-text">Resultados <em>reales</em></h2>
     </div>
-    <div class="splide" id="landingWorkSlider">
-      <div class="splide__track">
-        <div class="splide__list">
-          <div class="splide__slide">
-            <article class="lw-case">
-              <div class="lw-case__img">
-                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=540&fit=crop&q=80" alt="E-commerce premium" loading="lazy">
-                <div class="lw-case__overlay">
-                  <span class="lw-case__tag">E-commerce</span>
-                </div>
-              </div>
-              <div class="lw-case__info">
-                <h3 class="lw-case__title">Tienda online premium</h3>
-                <div class="lw-case__metrics">
-                  <div class="lw-case__metric">
-                    <span class="lw-case__metric-val">+180%</span>
-                    <span class="lw-case__metric-lab">Conversión</span>
-                  </div>
-                  <div class="lw-case__metric">
-                    <span class="lw-case__metric-val">2.5 sem</span>
-                    <span class="lw-case__metric-lab">Entrega</span>
-                  </div>
-                  <div class="lw-case__metric">
-                    <span class="lw-case__metric-val">96</span>
-                    <span class="lw-case__metric-lab">Lighthouse</span>
-                  </div>
-                </div>
-              </div>
-            </article>
-          </div>
-          <div class="splide__slide">
-            <article class="lw-case">
-              <div class="lw-case__img">
-                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=540&fit=crop&q=80" alt="SaaS Landing" loading="lazy">
-                <div class="lw-case__overlay">
-                  <span class="lw-case__tag">SaaS</span>
-                </div>
-              </div>
-              <div class="lw-case__info">
-                <h3 class="lw-case__title">Landing de captación</h3>
-                <div class="lw-case__metrics">
-                  <div class="lw-case__metric">
-                    <span class="lw-case__metric-val">12%</span>
-                    <span class="lw-case__metric-lab">Conversión</span>
-                  </div>
-                  <div class="lw-case__metric">
-                    <span class="lw-case__metric-val">10 días</span>
-                    <span class="lw-case__metric-lab">Entrega</span>
-                  </div>
-                  <div class="lw-case__metric">
-                    <span class="lw-case__metric-val">+2.4K</span>
-                    <span class="lw-case__metric-lab">Registros/mes</span>
-                  </div>
-                </div>
-              </div>
-            </article>
-          </div>
-          <div class="splide__slide">
-            <article class="lw-case">
-              <div class="lw-case__img">
-                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=540&fit=crop&q=80" alt="Web corporativa" loading="lazy">
-                <div class="lw-case__overlay">
-                  <span class="lw-case__tag">Corporativa</span>
-                </div>
-              </div>
-              <div class="lw-case__info">
-                <h3 class="lw-case__title">Web corporativa</h3>
-                <div class="lw-case__metrics">
-                  <div class="lw-case__metric">
-                    <span class="lw-case__metric-val">35</span>
-                    <span class="lw-case__metric-lab">Leads/mes</span>
-                  </div>
-                  <div class="lw-case__metric">
-                    <span class="lw-case__metric-val">3 sem</span>
-                    <span class="lw-case__metric-lab">Entrega</span>
-                  </div>
-                  <div class="lw-case__metric">
-                    <span class="lw-case__metric-val">1.2s</span>
-                    <span class="lw-case__metric-lab">Carga</span>
-                  </div>
-                </div>
-              </div>
-            </article>
-          </div>
-          <div class="splide__slide">
-            <article class="lw-case">
-              <div class="lw-case__img">
-                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=540&fit=crop&q=80" alt="Plataforma digital" loading="lazy">
-                <div class="lw-case__overlay">
-                  <span class="lw-case__tag">Plataforma</span>
-                </div>
-              </div>
-              <div class="lw-case__info">
-                <h3 class="lw-case__title">Plataforma educativa</h3>
-                <div class="lw-case__metrics">
-                  <div class="lw-case__metric">
-                    <span class="lw-case__metric-val">+500</span>
-                    <span class="lw-case__metric-lab">Usuarios/mes</span>
-                  </div>
-                  <div class="lw-case__metric">
-                    <span class="lw-case__metric-val">4 sem</span>
-                    <span class="lw-case__metric-lab">Entrega</span>
-                  </div>
-                  <div class="lw-case__metric">
-                    <span class="lw-case__metric-val">94</span>
-                    <span class="lw-case__metric-lab">Lighthouse</span>
-                  </div>
-                </div>
-              </div>
-            </article>
+    <div class="lw-cases__track" data-lw="cases-track">
+      <article class="lw-case-card lw-case-card--tall">
+        <div class="lw-case-card__img">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop&q=80" alt="E-commerce premium" loading="lazy">
+          <div class="lw-case-card__overlay">
+            <span class="lw-case-card__tag">E-commerce</span>
           </div>
         </div>
-      </div>
+        <div class="lw-case-card__info">
+          <h3 class="lw-case-card__title">Tienda online premium</h3>
+          <div class="lw-case-card__metrics">
+            <div class="lw-case-card__metric">
+              <span class="lw-case-card__metric-val">+180%</span>
+              <span class="lw-case-card__metric-lab">Conversión</span>
+            </div>
+            <div class="lw-case-card__metric">
+              <span class="lw-case-card__metric-val">2.5 sem</span>
+              <span class="lw-case-card__metric-lab">Entrega</span>
+            </div>
+            <div class="lw-case-card__metric">
+              <span class="lw-case-card__metric-val">96</span>
+              <span class="lw-case-card__metric-lab">Lighthouse</span>
+            </div>
+          </div>
+        </div>
+      </article>
+      <article class="lw-case-card lw-case-card--short">
+        <div class="lw-case-card__img">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop&q=80" alt="SaaS Landing" loading="lazy">
+          <div class="lw-case-card__overlay">
+            <span class="lw-case-card__tag">SaaS</span>
+          </div>
+        </div>
+        <div class="lw-case-card__info">
+          <h3 class="lw-case-card__title">Landing de captación</h3>
+          <div class="lw-case-card__metrics">
+            <div class="lw-case-card__metric">
+              <span class="lw-case-card__metric-val">12%</span>
+              <span class="lw-case-card__metric-lab">Conversión</span>
+            </div>
+            <div class="lw-case-card__metric">
+              <span class="lw-case-card__metric-val">10 días</span>
+              <span class="lw-case-card__metric-lab">Entrega</span>
+            </div>
+            <div class="lw-case-card__metric">
+              <span class="lw-case-card__metric-val">+2.4K</span>
+              <span class="lw-case-card__metric-lab">Registros/mes</span>
+            </div>
+          </div>
+        </div>
+      </article>
+      <article class="lw-case-card lw-case-card--tall">
+        <div class="lw-case-card__img">
+          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop&q=80" alt="Web corporativa" loading="lazy">
+          <div class="lw-case-card__overlay">
+            <span class="lw-case-card__tag">Corporativa</span>
+          </div>
+        </div>
+        <div class="lw-case-card__info">
+          <h3 class="lw-case-card__title">Web corporativa</h3>
+          <div class="lw-case-card__metrics">
+            <div class="lw-case-card__metric">
+              <span class="lw-case-card__metric-val">35</span>
+              <span class="lw-case-card__metric-lab">Leads/mes</span>
+            </div>
+            <div class="lw-case-card__metric">
+              <span class="lw-case-card__metric-val">3 sem</span>
+              <span class="lw-case-card__metric-lab">Entrega</span>
+            </div>
+            <div class="lw-case-card__metric">
+              <span class="lw-case-card__metric-val">1.2s</span>
+              <span class="lw-case-card__metric-lab">Carga</span>
+            </div>
+          </div>
+        </div>
+      </article>
+      <article class="lw-case-card lw-case-card--short">
+        <div class="lw-case-card__img">
+          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop&q=80" alt="Plataforma digital" loading="lazy">
+          <div class="lw-case-card__overlay">
+            <span class="lw-case-card__tag">Plataforma</span>
+          </div>
+        </div>
+        <div class="lw-case-card__info">
+          <h3 class="lw-case-card__title">Plataforma educativa</h3>
+          <div class="lw-case-card__metrics">
+            <div class="lw-case-card__metric">
+              <span class="lw-case-card__metric-val">+500</span>
+              <span class="lw-case-card__metric-lab">Usuarios/mes</span>
+            </div>
+            <div class="lw-case-card__metric">
+              <span class="lw-case-card__metric-val">4 sem</span>
+              <span class="lw-case-card__metric-lab">Entrega</span>
+            </div>
+            <div class="lw-case-card__metric">
+              <span class="lw-case-card__metric-val">94</span>
+              <span class="lw-case-card__metric-lab">Lighthouse</span>
+            </div>
+          </div>
+        </div>
+      </article>
     </div>
   </section>
 
@@ -636,29 +664,6 @@
   <script src="assets/js/global.js"></script>
   <script src="assets/js/animations.js"></script>
   <script src="assets/js/landing-web.js"></script>
-  <script>
-    // Landing page Splide slider
-    (function () {
-      'use strict';
-      var slider = document.getElementById('landingWorkSlider');
-      if (slider && typeof Splide !== 'undefined') {
-        new Splide('#landingWorkSlider', {
-          type: 'loop',
-          perPage: 2,
-          gap: '32px',
-          padding: { left: 'clamp(24px, 4vw, 80px)', right: '10%' },
-          pagination: false,
-          arrows: false,
-          drag: true,
-          speed: 600,
-          easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
-          breakpoints: {
-            1024: { perPage: 1, padding: { left: '24px', right: '20%' } },
-            640: { perPage: 1, gap: '20px', padding: { left: '24px', right: '10%' } },
-          },
-        }).mount();
-      }
-    })();
-  </script>
+  <script>/* Cases now use horizontal scroll pinned via landing-web.js */</script>
 </body>
 </html>

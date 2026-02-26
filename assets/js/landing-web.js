@@ -1,6 +1,6 @@
 /* ============================================
    VELARQUE — Landing Web Advanced Animations
-   Hero Paths + Scroll-Driven Motion System
+   Hero Paths + Typewriter + Timeline + Scroll System
    Requires: gsap, ScrollTrigger
    ============================================ */
 
@@ -129,7 +129,74 @@
   }
 
   // ═══════════════════════════════════════════
-  // 3. HERO — Description + scroll + path parallax
+  // 3. HERO — Typewriter cycling phrases
+  // ═══════════════════════════════════════════
+  function initTypewriter() {
+    var wrapper = document.querySelector('[data-lw="typewriter"]');
+    if (!wrapper) return;
+    var textEl = wrapper.querySelector('.lw-typewriter__text');
+    if (!textEl) return;
+
+    var phrases = [
+      'Diseño a medida',
+      'Código limpio',
+      'Entrega en semanas',
+      'Resultados reales',
+      'SEO que posiciona',
+    ];
+
+    var phraseIndex = 0;
+    var charIndex = 0;
+    var isDeleting = false;
+    var typeSpeed = 65;
+    var deleteSpeed = 35;
+    var pauseAfterType = 2200;
+    var pauseAfterDelete = 400;
+
+    // Fade the typewriter in after hero animation
+    gsap.fromTo(wrapper,
+      { opacity: 0, y: 15 },
+      { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', delay: 2.2 }
+    );
+
+    function tick() {
+      var current = phrases[phraseIndex];
+
+      if (!isDeleting) {
+        // Typing
+        charIndex++;
+        textEl.textContent = current.substring(0, charIndex);
+
+        if (charIndex === current.length) {
+          // Finished typing — pause then delete
+          setTimeout(function () {
+            isDeleting = true;
+            tick();
+          }, pauseAfterType);
+          return;
+        }
+        setTimeout(tick, typeSpeed + Math.random() * 40);
+      } else {
+        // Deleting
+        charIndex--;
+        textEl.textContent = current.substring(0, charIndex);
+
+        if (charIndex === 0) {
+          isDeleting = false;
+          phraseIndex = (phraseIndex + 1) % phrases.length;
+          setTimeout(tick, pauseAfterDelete);
+          return;
+        }
+        setTimeout(tick, deleteSpeed);
+      }
+    }
+
+    // Start after hero loads
+    setTimeout(tick, 2800);
+  }
+
+  // ═══════════════════════════════════════════
+  // 4. HERO — Description + scroll + path parallax
   // ═══════════════════════════════════════════
   function initHeroSecondary() {
     var desc = document.querySelector('.lw-hero .hero__desc');
@@ -162,7 +229,7 @@
   }
 
   // ═══════════════════════════════════════════
-  // 4. VELOCITY MARQUEE — with dynamic skew
+  // 5. VELOCITY MARQUEE — with dynamic skew
   // ═══════════════════════════════════════════
   function initVelocityMarquee() {
     var section = document.querySelector('[data-lw="velocity-marquee"]');
@@ -186,7 +253,6 @@
       onUpdate: function (self) {
         var vel = self.getVelocity();
         velocityMultiplier = Math.abs(vel) / 600;
-        // Skew in scroll direction
         var targetSkew = Math.min(Math.max(vel / 400, -5), 5);
         currentSkew += (targetSkew - currentSkew) * 0.08;
       },
@@ -208,12 +274,11 @@
   }
 
   // ═══════════════════════════════════════════
-  // 5. PAIN POINTS — word-by-word scrub + highlights
+  // 6. PAIN POINTS — word-by-word scrub + highlights
   // ═══════════════════════════════════════════
   function initPainReveal() {
     var title = document.querySelector('.lw-pain__title');
     if (title) {
-      // Recursively wrap text nodes in .lw-word spans
       function wrapWords(el) {
         var nodes = Array.from(el.childNodes);
         nodes.forEach(function (node) {
@@ -266,7 +331,7 @@
       });
     });
 
-    // Subtitle — simple reveal
+    // Subtitle
     var subtitle = document.querySelector('.lw-pain__subtitle');
     if (subtitle) {
       gsap.fromTo(subtitle,
@@ -280,13 +345,78 @@
   }
 
   // ═══════════════════════════════════════════
-  // 6. SOLUTION CARDS — cinematic entrance + 3D tilt
+  // 7. MANIFESTO — Text split word reveal
+  // ═══════════════════════════════════════════
+  function initManifestoReveal() {
+    var text = document.querySelector('.lw-manifesto__text');
+    if (!text) return;
+
+    // Decorative line animation
+    var section = document.querySelector('.lw-manifesto');
+    if (section) {
+      gsap.fromTo(section,
+        { '--line-width': '0px' },
+        {
+          '--line-width': '60px', duration: 1.2, ease: 'power3.out',
+          scrollTrigger: { trigger: section, start: 'top 85%' },
+        }
+      );
+    }
+
+    // Split text into words, preserving <em> tags
+    function wrapManifestoWords(el) {
+      var nodes = Array.from(el.childNodes);
+      nodes.forEach(function (node) {
+        if (node.nodeType === 3) {
+          var parts = node.textContent.split(/(\s+)/);
+          var frag = document.createDocumentFragment();
+          parts.forEach(function (p) {
+            if (/\S/.test(p)) {
+              var span = document.createElement('span');
+              span.className = 'lw-mword';
+              span.textContent = p;
+              span.style.display = 'inline-block';
+              span.style.willChange = 'transform, opacity';
+              frag.appendChild(span);
+            } else if (p) {
+              frag.appendChild(document.createTextNode(p));
+            }
+          });
+          node.parentNode.replaceChild(frag, node);
+        } else if (node.nodeType === 1 && node.tagName !== 'BR') {
+          wrapManifestoWords(node);
+        }
+      });
+    }
+
+    wrapManifestoWords(text);
+
+    var mWords = text.querySelectorAll('.lw-mword');
+    if (mWords.length) {
+      gsap.set(mWords, { opacity: 0, y: 40 });
+      gsap.to(mWords, {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        stagger: 0.04,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: text,
+          start: 'top 80%',
+          end: 'bottom 60%',
+          scrub: 1,
+        },
+      });
+    }
+  }
+
+  // ═══════════════════════════════════════════
+  // 8. SOLUTION CARDS — cinematic entrance + 3D tilt
   // ═══════════════════════════════════════════
   function initSolutionCards() {
     var cards = document.querySelectorAll('.lw-solution-card');
     if (!cards.length) return;
 
-    // Cinematic entrance from different angles
     var entrances = [
       { x: -80, y: 80, rotation: -5 },
       { x: 0, y: 120, rotation: 0 },
@@ -323,7 +453,6 @@
           transformOrigin: 'center center',
         });
 
-        // Parallax inner content for depth
         var content = card.querySelector('.lw-solution-card__content');
         if (content) {
           gsap.to(content, {
@@ -349,7 +478,7 @@
   }
 
   // ═══════════════════════════════════════════
-  // 7. STATS — dramatic scale + blur entrance
+  // 9. STATS — dramatic scale + blur entrance
   // ═══════════════════════════════════════════
   function initStatsDramatic() {
     var section = document.querySelector('[data-lw="stats-pin"]');
@@ -365,7 +494,6 @@
       var decimals = (String(target).split('.')[1] || '').length;
       var obj = { val: 0 };
 
-      // Start state: large, blurred, invisible
       gsap.set(el, { scale: 2.5, opacity: 0, filter: 'blur(12px)' });
 
       ScrollTrigger.create({
@@ -373,14 +501,12 @@
         start: 'top 65%',
         once: true,
         onEnter: function () {
-          // Scale + deblur
           gsap.to(el, {
             scale: 1, opacity: 1, filter: 'blur(0px)',
             duration: 1, ease: 'power4.out',
             delay: i * 0.15,
           });
 
-          // Counter
           gsap.to(obj, {
             val: target,
             duration: 2.5,
@@ -394,7 +520,6 @@
       });
     });
 
-    // Labels stagger
     var labels = section.querySelectorAll('.lw-stat__label');
     gsap.fromTo(labels,
       { opacity: 0, y: 20 },
@@ -406,113 +531,158 @@
   }
 
   // ═══════════════════════════════════════════
-  // 8. HORIZONTAL SCROLL — with progress bar
+  // 10. TIMELINE — Vertical scroll-driven progress
   // ═══════════════════════════════════════════
-  function initHorizontalScroll() {
-    var wrapper = document.querySelector('[data-lw="horizontal-scroll"]');
-    if (!wrapper) return;
-    var track = wrapper.querySelector('.lw-process__track');
-    if (!track) return;
+  function initTimeline() {
+    var timeline = document.querySelector('[data-lw="timeline"]');
+    if (!timeline) return;
 
-    // Mobile: native horizontal scroll
-    if (window.innerWidth < 768) {
-      wrapper.style.overflowX = 'auto';
-      wrapper.style.webkitOverflowScrolling = 'touch';
-      return;
-    }
+    var lineFill = timeline.querySelector('.lw-timeline__line-fill');
+    var items = timeline.querySelectorAll('.lw-timeline__item');
+    var dots = timeline.querySelectorAll('.lw-timeline__dot');
 
-    // Create progress bar
-    var bar = document.createElement('div');
-    bar.className = 'lw-process__progress';
-    var fill = document.createElement('div');
-    fill.className = 'lw-process__progress-fill';
-    bar.appendChild(fill);
-    wrapper.insertBefore(bar, track);
+    if (!lineFill || !items.length) return;
 
-    function getScrollAmount() {
-      return -(track.scrollWidth - window.innerWidth);
-    }
-
-    var tween = gsap.to(track, { x: getScrollAmount, ease: 'none' });
-
-    ScrollTrigger.create({
-      trigger: wrapper,
-      start: 'top top',
-      end: function () { return '+=' + Math.abs(getScrollAmount()); },
-      pin: true,
-      scrub: 1,
-      animation: tween,
-      invalidateOnRefresh: true,
-      onUpdate: function (self) {
-        gsap.set(fill, { scaleX: self.progress });
+    // Scroll-driven progress line
+    gsap.to(lineFill, {
+      height: '100%',
+      ease: 'none',
+      scrollTrigger: {
+        trigger: timeline,
+        start: 'top 60%',
+        end: 'bottom 50%',
+        scrub: 1,
       },
     });
 
-    // Cards entrance
-    var cards = track.querySelectorAll('.lw-hstep');
-    gsap.fromTo(cards,
-      { opacity: 0, y: 60, scale: 0.92 },
-      {
-        opacity: 1, y: 0, scale: 1,
-        duration: 0.8, stagger: 0.15, ease: 'power3.out',
-        scrollTrigger: { trigger: wrapper, start: 'top 80%' },
-      }
-    );
-  }
-
-  // ═══════════════════════════════════════════
-  // 9. WORK — case image parallax + tag entrance
-  // ═══════════════════════════════════════════
-  function initCaseAnimations() {
-    var caseImages = document.querySelectorAll('.lw-case__img img');
-    caseImages.forEach(function (img) {
-      gsap.set(img, { scale: 1.15 });
-      gsap.to(img, {
-        y: -40,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: img.closest('.lw-case'),
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: 1,
-        },
+    // Activate dots as they enter viewport
+    dots.forEach(function (dot, i) {
+      ScrollTrigger.create({
+        trigger: items[i],
+        start: 'top 65%',
+        onEnter: function () { dot.classList.add('is-active'); },
+        onLeaveBack: function () { dot.classList.remove('is-active'); },
       });
     });
 
-    // Tags slide in
-    var tags = document.querySelectorAll('.lw-case__tag');
-    tags.forEach(function (tag) {
-      gsap.fromTo(tag,
-        { opacity: 0, x: -20, scale: 0.8 },
-        {
-          opacity: 1, x: 0, scale: 1,
-          duration: 0.6, ease: 'back.out(1.5)',
-          scrollTrigger: { trigger: tag.closest('.lw-case'), start: 'top 75%' },
-        }
-      );
-    });
+    // Timeline items: staggered entrance from left
+    items.forEach(function (item, i) {
+      var content = item.querySelector('.lw-timeline__content');
+      if (!content) return;
 
-    // Metrics count up
-    var metricVals = document.querySelectorAll('.lw-case__metric-val');
-    metricVals.forEach(function (val) {
-      gsap.fromTo(val,
-        { opacity: 0, y: 10 },
+      gsap.fromTo(content,
+        { opacity: 0, x: -40, y: 20 },
         {
-          opacity: 1, y: 0, duration: 0.5, ease: 'power3.out',
-          scrollTrigger: { trigger: val.closest('.lw-case'), start: 'top 70%' },
+          opacity: 1, x: 0, y: 0,
+          duration: 1, ease: 'power3.out',
+          scrollTrigger: { trigger: item, start: 'top 75%' },
         }
       );
+
+      // Media image parallax
+      var media = item.querySelector('.lw-timeline__media img');
+      if (media) {
+        gsap.set(media, { scale: 1.1 });
+        gsap.to(media, {
+          y: -30,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: item,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: 1,
+          },
+        });
+      }
     });
   }
 
   // ═══════════════════════════════════════════
-  // 10. TESTIMONIAL — marks + word reveal + author
+  // 11. CASES — Horizontal scroll pinned
+  // ═══════════════════════════════════════════
+  function initCasesHorizontal() {
+    var section = document.querySelector('[data-lw="cases-horizontal"]');
+    var track = document.querySelector('[data-lw="cases-track"]');
+    if (!section || !track) return;
+
+    // Wait for layout to settle
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        var cards = track.children;
+        if (!cards.length) return;
+
+        var trackWidth = track.scrollWidth;
+        var viewportWidth = window.innerWidth;
+        var scrollDistance = trackWidth - viewportWidth + 80;
+
+        if (scrollDistance <= 0) return;
+
+        gsap.to(track, {
+          x: function () { return -scrollDistance; },
+          ease: 'none',
+          scrollTrigger: {
+            trigger: section,
+            start: 'top top+=80',
+            end: function () { return '+=' + scrollDistance; },
+            pin: true,
+            scrub: 1,
+            invalidateOnRefresh: true,
+            anticipatePin: 1,
+          },
+        });
+
+        // Cards entrance animation
+        var cardEls = track.querySelectorAll('.lw-case-card');
+        gsap.fromTo(cardEls,
+          { opacity: 0, y: 60, scale: 0.92 },
+          {
+            opacity: 1, y: 0, scale: 1,
+            duration: 0.8, stagger: 0.15, ease: 'power3.out',
+            scrollTrigger: { trigger: section, start: 'top 85%' },
+          }
+        );
+
+        // Image parallax within each card
+        cardEls.forEach(function (card) {
+          var img = card.querySelector('.lw-case-card__img img');
+          if (img) {
+            gsap.set(img, { scale: 1.12 });
+            gsap.to(img, {
+              y: -30,
+              ease: 'none',
+              scrollTrigger: {
+                trigger: section,
+                start: 'top top',
+                end: function () { return '+=' + scrollDistance; },
+                scrub: 1,
+              },
+            });
+          }
+        });
+
+        // Tags pop in
+        var tags = track.querySelectorAll('.lw-case-card__tag');
+        tags.forEach(function (tag) {
+          gsap.fromTo(tag,
+            { opacity: 0, x: -20, scale: 0.8 },
+            {
+              opacity: 1, x: 0, scale: 1,
+              duration: 0.6, ease: 'back.out(1.5)',
+              scrollTrigger: { trigger: section, start: 'top 80%' },
+            }
+          );
+        });
+      });
+    });
+  }
+
+  // ═══════════════════════════════════════════
+  // 12. TESTIMONIAL — marks + word reveal + author
   // ═══════════════════════════════════════════
   function initTestimonialReveal() {
     var testimonial = document.querySelector('[data-lw="testimonial"]');
     if (!testimonial) return;
 
-    // Quote marks — dramatic scale + rotation
     var marks = testimonial.querySelector('.testimonial__marks');
     if (marks) {
       gsap.fromTo(marks,
@@ -525,7 +695,6 @@
       );
     }
 
-    // Text — word-by-word scrubbed opacity
     var text = testimonial.querySelector('.testimonial__text');
     if (text) {
       var content = text.textContent.trim();
@@ -549,7 +718,6 @@
       });
     }
 
-    // Author — slide up
     var author = testimonial.querySelector('.testimonial__author');
     if (author) {
       gsap.fromTo(author,
@@ -563,13 +731,12 @@
   }
 
   // ═══════════════════════════════════════════
-  // 11. INCLUDES — stagger with rotation
+  // 13. INCLUDES — stagger with rotation
   // ═══════════════════════════════════════════
   function initIncludesReveal() {
     var section = document.querySelector('.lw-includes');
     if (!section) return;
 
-    // Left side: elements cascade up
     var left = section.querySelector('.lw-includes__left');
     if (left) {
       gsap.fromTo(Array.from(left.children),
@@ -581,7 +748,6 @@
       );
     }
 
-    // Price amount pop
     var price = section.querySelector('.lw-includes__price-amount');
     if (price) {
       gsap.fromTo(price,
@@ -593,7 +759,6 @@
       );
     }
 
-    // Right items: slide from right with micro rotation
     var items = section.querySelectorAll('.lw-includes__item');
     if (items.length) {
       gsap.fromTo(items,
@@ -608,7 +773,7 @@
   }
 
   // ═══════════════════════════════════════════
-  // 12. FAQ — smooth GSAP height animation
+  // 14. FAQ — smooth GSAP height animation
   // ═══════════════════════════════════════════
   function initFaqSmooth() {
     var items = document.querySelectorAll('.faq-item');
@@ -618,10 +783,8 @@
       var summary = item.querySelector('summary');
       if (!answer || !summary) return;
 
-      // Set answer overflow
       answer.style.overflow = 'hidden';
 
-      // Non-open items: collapse
       if (!item.open) {
         answer.style.height = '0px';
         answer.style.opacity = '0';
@@ -631,13 +794,11 @@
         e.preventDefault();
 
         if (item.open) {
-          // Animate close
           gsap.to(answer, {
             height: 0, opacity: 0, duration: 0.4, ease: 'power3.inOut',
             onComplete: function () { item.open = false; },
           });
         } else {
-          // Animate open
           answer.style.height = '0px';
           answer.style.opacity = '0';
           item.open = true;
@@ -653,7 +814,6 @@
       });
     });
 
-    // FAQ items entrance stagger
     var faqList = document.querySelector('.faq__list');
     if (faqList) {
       gsap.fromTo(items,
@@ -667,10 +827,9 @@
   }
 
   // ═══════════════════════════════════════════
-  // 13. CONTACT — cascade reveal
+  // 15. CONTACT — cascade reveal
   // ═══════════════════════════════════════════
   function initContactCascade() {
-    // Left side — slide from left
     var left = document.querySelector('.lw-contact__left');
     if (left) {
       gsap.fromTo(Array.from(left.children),
@@ -682,7 +841,6 @@
       );
     }
 
-    // Form fields — cascade from right
     var form = document.querySelector('.contact-form');
     if (form) {
       var els = form.querySelectorAll('.contact-form__group, .contact-form__row, .btn-main, .contact-form__note');
@@ -698,7 +856,7 @@
   }
 
   // ═══════════════════════════════════════════
-  // 14. FOOTER — cascade links
+  // 16. FOOTER — cascade links
   // ═══════════════════════════════════════════
   function initFooterReveal() {
     var footer = document.querySelector('.footer');
@@ -724,7 +882,6 @@
       }
     );
 
-    // Individual links cascade within each column
     cols.forEach(function (col) {
       var links = col.querySelectorAll('a, span:not(.footer__col-title)');
       gsap.fromTo(links,
@@ -743,13 +900,15 @@
   function initAll() {
     generateHeroPaths();
     initCharSplit();
+    initTypewriter();
     initHeroSecondary();
     initVelocityMarquee();
     initPainReveal();
+    initManifestoReveal();
     initSolutionCards();
     initStatsDramatic();
-    initHorizontalScroll();
-    initCaseAnimations();
+    initTimeline();
+    initCasesHorizontal();
     initTestimonialReveal();
     initIncludesReveal();
     initFaqSmooth();
