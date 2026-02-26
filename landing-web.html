@@ -58,9 +58,9 @@
     </div>
   </nav>
 
-  <!-- HERO — Light with warm yellow glow -->
-  <section class="lw-hero" data-gsap="hero">
-    <div class="lw-hero__glow"></div>
+  <!-- HERO — Flowing SVG paths -->
+  <section class="lw-hero">
+    <div class="lw-hero__paths" id="heroPaths"></div>
     <div class="container hero__container">
       <h1 class="hero__title" data-lw="char-split">
         <span class="hero__title-line">
@@ -138,7 +138,7 @@
         <h2 class="section-title reveal-text">Lo hacemos <em>diferente</em></h2>
       </div>
     </div>
-    <div class="lw-solutions__cards" data-gsap="stagger">
+    <div class="lw-solutions__cards">
       <div class="lw-solution-card" data-lw="tilt">
         <div class="lw-solution-card__img">
           <img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=600&h=750&fit=crop&q=80" alt="Diseño" loading="lazy">
@@ -177,19 +177,19 @@
     <div class="container">
       <div class="lw-stats__grid">
         <div class="lw-stat">
-          <span class="lw-stat__number" data-count="50" data-suffix="+">0</span>
+          <span class="lw-stat__number" data-lw-count="50" data-suffix="+">0</span>
           <span class="lw-stat__label">Proyectos<br>entregados</span>
         </div>
         <div class="lw-stat">
-          <span class="lw-stat__number" data-count="3">0</span>
+          <span class="lw-stat__number" data-lw-count="3">0</span>
           <span class="lw-stat__label">Semanas de<br>entrega media</span>
         </div>
         <div class="lw-stat">
-          <span class="lw-stat__number" data-count="98" data-suffix="%">0</span>
+          <span class="lw-stat__number" data-lw-count="98" data-suffix="%">0</span>
           <span class="lw-stat__label">Satisfacción<br>del cliente</span>
         </div>
         <div class="lw-stat">
-          <span class="lw-stat__number" data-count="4.2" data-prefix="x">0</span>
+          <span class="lw-stat__number" data-lw-count="4.2" data-prefix="x">0</span>
           <span class="lw-stat__label">Retorno medio<br>en paid media</span>
         </div>
       </div>
@@ -381,7 +381,7 @@
   <!-- TESTIMONIAL -->
   <section class="testimonial-section">
     <div class="container">
-      <div class="testimonial" data-gsap="fade-scale">
+      <div class="testimonial" data-lw="testimonial">
         <div class="testimonial__marks">&ldquo;</div>
         <blockquote class="testimonial__text">
           Es la mejor inversión que hemos hecho en marketing. La web que nos hizo Velarque nos genera clientes cada semana sin tocar nada.
@@ -403,7 +403,7 @@
   <section class="lw-includes">
     <div class="container">
       <div class="lw-includes__layout">
-        <div class="lw-includes__left reveal-text">
+        <div class="lw-includes__left">
           <p class="section-label">( Todo incluido )</p>
           <h2 class="lw-includes__title">Cada proyecto incluye</h2>
           <div class="lw-includes__price">
@@ -415,7 +415,7 @@
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
           </a>
         </div>
-        <div class="lw-includes__right" data-gsap="stagger">
+        <div class="lw-includes__right">
           <div class="lw-includes__item">
             <span class="lw-includes__check">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg>
@@ -536,7 +536,7 @@
   <section class="lw-contact" id="contacto">
     <div class="container">
       <div class="lw-contact__layout">
-        <div class="lw-contact__left reveal-text">
+        <div class="lw-contact__left">
           <p class="section-label">( Empecemos )</p>
           <h2 class="lw-contact__title">Tu próximo proyecto empieza <em>aquí</em></h2>
           <p class="lw-contact__desc">Cuéntanos qué necesitas. Propuesta personalizada en 48h. Sin compromiso.</p>
