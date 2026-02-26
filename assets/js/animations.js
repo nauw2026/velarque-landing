@@ -63,6 +63,37 @@
 
     var scroll = hero.querySelector('.hero__scroll');
     if (scroll) tl.fromTo(scroll, { opacity: 0 }, { opacity: 1, duration: 0.8 }, '-=0.2');
+
+    // Geometric shapes — cinematic entrance + perpetual float
+    var shapes = hero.querySelectorAll('.hero__shape');
+    if (shapes.length) {
+      var shapeRotations = [12, -15, -8, 20, -25];
+      var shapeDelays = [0.3, 0.5, 0.4, 0.6, 0.7];
+
+      shapes.forEach(function (shape, i) {
+        var targetRotate = shapeRotations[i] || 0;
+        var entranceDelay = shapeDelays[i] || 0.3 + i * 0.15;
+
+        // Entrance: drop from above with rotation offset
+        tl.fromTo(shape,
+          { opacity: 0, y: -150, rotation: targetRotate - 15 },
+          { opacity: 1, y: 0, rotation: targetRotate, duration: 2.4, ease: 'power4.out' },
+          entranceDelay
+        );
+      });
+
+      // Perpetual float — starts after all entrances complete
+      shapes.forEach(function (shape, i) {
+        gsap.to(shape, {
+          y: 15,
+          duration: 10 + i * 2,
+          repeat: -1,
+          yoyo: true,
+          ease: 'sine.inOut',
+          delay: 3.5
+        });
+      });
+    }
   }
 
   function createScrollAnimations() {
