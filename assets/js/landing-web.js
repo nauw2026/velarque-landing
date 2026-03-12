@@ -555,7 +555,7 @@
           ease: 'none',
           scrollTrigger: {
             trigger: section,
-            start: 'top top+=80',
+            start: 'top top',
             end: function () { return '+=' + scrollDistance; },
             pin: true,
             scrub: 1,
